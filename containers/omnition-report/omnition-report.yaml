@@ -1,0 +1,11 @@
+name: omnition-report
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - curl=7.83.1
+  - deepmerge=1.0.1
+  - matplotlib=3.5.1
+  - nodejs=12.19.0 
+  - pyreadr=0.4.4
+  - structlog=21.5.0

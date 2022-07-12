@@ -1,0 +1,35 @@
+<div>
+<h2>${name}</h2>
+<div>
+Summary:
+<ul>
+	<li>Task Status: ${status}</li>
+    <li>Exit Code: ${exit}</li>
+    <li>Start: ${start}</li>
+    <li>End: ${complete}</li>
+    <li>Duration: ${realtime}</li>
+</ul>
+</div>
+
+<div>
+Settings:
+<ul>
+    <li>Container: ${container}</li>
+    <li>Work Directory: ${workdir}</li>
+</ul>
+</div>
+
+<div>
+Script:
+<pre style="padding-left: 23px">${script.stripIndent()}</pre>
+</div>
+
+<div>
+Stdout:
+<pre style="padding-left: 23px">${stdout}</pre>
+</div>
+
+<div>
+Stderr:
+<pre style="padding-left: 23px">${stderr}</pre>
+</div>
