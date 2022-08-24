@@ -6,6 +6,8 @@ include {
     GUNZIP as GUNZIP_FASTA
     GUNZIP as GUNZIP_GTF               } from '../../modules/core/gunzip.nf'                      \
      addParams(options: params.atac)
+include { VERIFY_REFERENCES            } from '../../modules/atac/verify_references.nf'           \
+ addParams(options: params.atac)
 include { COMBINE_REFERENCES           } from '../../modules/core/combine_references.nf'          \
  addParams(options: params.atac)
 include { GENERATE_EMPTY_BLOCKLIST     } from '../../modules/atac/generate_empty_blocklist.nf'    \
@@ -38,13 +40,20 @@ workflow ATAC_REFERENCE {
     GUNZIP_FASTA(
             ch_fasta,
             ch_images_pulled
-       )
+    )
 
     // Decompress GTF files if needed
     GUNZIP_GTF(
             ch_gtf,
             ch_images_pulled
-   )
+    )
+
+    // Verify reference formatting
+    VERIFY_REFERENCES(
+            GUNZIP_FASTA.out.decompressed.collect(),
+            GUNZIP_GTF.out.decompressed.collect(),
+            ch_images_pulled
+    )
 
     // Make mixed references if needed
     if (params.atac.mixed) {

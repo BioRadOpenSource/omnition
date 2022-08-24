@@ -350,7 +350,7 @@ workflow ATAC_ANALYSIS {
             .map { i  -> [ i[0].substring(0, i[0].lastIndexOf('-')), i[1], i[2], i[3] ] }
             .groupTuple()
             .join(COMPUTE_DECONVOLUTION_STAT_CHR.out.overlap_count
-                .filter { !(it =~ /${params.atac.mitoContig}/) }
+                .filter { i -> !(i[1] =~ /${params.atac.mitoContig}/) }
                 .map { i  -> [ i[0].substring(0, i[0].lastIndexOf('-')), i[2] ] }
                 .groupTuple())
     } else {
@@ -359,7 +359,7 @@ workflow ATAC_ANALYSIS {
             .join(DETERMINE_BARCODE_ALLOWLIST.out.allowlist, by: 0)
             .join(DETERMINE_BARCODE_ALLOWLIST.out.params)
             .join(COMPUTE_DECONVOLUTION_STAT_CHR.out.overlap_count
-                .filter { !(it =~ /${params.atac.mitoContig}/) }
+                .filter { i -> !(i[1] =~ /${params.atac.mitoContig}/) }
                 .map { i  -> [ i[0], i[2] ] }
                 .groupTuple(), by: 0)
     }
@@ -406,8 +406,8 @@ workflow ATAC_ANALYSIS {
     // Merge chromosome bam files back together
     FINAL_BAM_MERGE(
         REANNOTATE_BAM.out.reannotate_bam
+            .filter { i -> !(i[1] =~ /${params.atac.mitoContig}/) }
             .map { tuple(it[0], it[2], it[3]) }
-            .filter { !(it =~ /${params.atac.mitoContig}/) }
             .groupTuple(),
         ch_images_pulled
     )
@@ -422,7 +422,7 @@ workflow ATAC_ANALYSIS {
     // Merge chromosome fragment files back together
     FINAL_FRAG_MERGE(
         REANNOTATE_FRAGMENTS.out.reannotate_fragments
-            .filter { !(it =~ /${params.atac.mitoContig}/) }
+            .filter { i -> !(i[1].name =~ /${params.atac.mitoContig}/) }
             .groupTuple(),
         ch_images_pulled
     )

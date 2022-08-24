@@ -33,7 +33,7 @@ if (params.atac) {
 
     // Ensure that the fasta and gtf are matched
     // Note that the channel can have one or two fasta files in it
-    Core.validateReferenceNames(params.atac.reference.fasta, params.atac.reference.gtf, log)
+    Core.validateReferenceNames(params.atac, log)
 
     // Validate reference workflow
     if (params.atac.workflow in [ 'reference', 'full' ]) {

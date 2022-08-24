@@ -10,8 +10,8 @@ process SPLIT_FASTQ {
     if (workflow.profile == 'aws') {
         label 'small'
   } else {
-        label 'cpu_xsmall'
-        label 'memory_xxsmall'
+        label 'cpu_medium'
+        label 'memory_small'
     }
     errorStrategy 'terminate'
 

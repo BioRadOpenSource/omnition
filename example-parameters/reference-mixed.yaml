@@ -1,0 +1,11 @@
+atac:
+    workflow: "reference"
+    reference:
+        directory: "/home/ubuntu/mixed-genome/"
+        fasta:
+            species1: "/home/ubuntu/mixed-genome/human.fa.gz"
+            species2: "/home/ubuntu/mixed-genome/mouse.fa.gz"
+        gtf:
+            species1: "/home/ubuntu/mixed-genome/human.gtf.gz"
+            species2: "/home/ubuntu/mixed-genome/mouse.gtf.gz"
+    mixed: true

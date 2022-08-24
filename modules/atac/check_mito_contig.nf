@@ -12,8 +12,8 @@ process CHECK_MITO_CONTIG {
     if (workflow.profile == 'aws') {
         label 'small'
   } else {
-        label 'cpu_1'
-        label 'memory_4'
+        label 'cpu_xsmall'
+        label 'memory_xsmall'
     }
 
   input:

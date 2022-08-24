@@ -1,0 +1,6 @@
+atac: 
+    workflow: "reference" 
+    reference: 
+        directory: "/home/ubuntu/human-genome/" 
+        fasta: "/home/ubuntu/human-genome/human.fa.gz" 
+        gtf: "/home/ubuntu/human-genome/human.gtf.gz" 

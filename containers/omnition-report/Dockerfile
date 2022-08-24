@@ -42,7 +42,7 @@ RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
 
 # Install application
 RUN --mount=type=secret,id=GITHUB_TOKEN conda activate $CONDA_ENV && \
-    git clone --branch v1.0.2-alpha.1 \
+    git clone --branch v1.0.3-alpha.1 \
     https://$(cat /run/secrets/GITHUB_TOKEN):x-oauth-basic@github.com/BioRadOpenSource/cuttlesoft-single-cell-report.git ./ && \
 	for FILE in $(cat .dockerignore); do rm -rf $FILE; done && \
     rm -rf .dockerignore .git* && \

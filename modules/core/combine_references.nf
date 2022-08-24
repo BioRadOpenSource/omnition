@@ -25,7 +25,7 @@ process COMBINE_REFERENCES {
     script:
     """
     # Append species names onto contigs in fasta
-    for REF in ${fasta}; do
+    for REF in \$(ls ${fasta}); do
 
       # Get species prefix from gtf filename
       SPECIES=\$(echo \$REF | awk -F '[.]' '{print \$1}' | sed 's;-;_;g')
@@ -36,10 +36,10 @@ process COMBINE_REFERENCES {
     done
 
     # Appending gtf headers to new file
-    grep -h "#" ${gtf} > mixed.gtf || true
+    grep -h "#" \$(ls ${gtf}) > mixed.gtf || true
 
     # Append species names onto contigs in gtf
-    for REF in ${gtf}; do
+    for REF in \$(ls ${gtf}); do
 
       # Get species prefix from gtf filename
       SPECIES=\$(echo \$REF | awk -F '[.]' '{print \$1}' | sed 's;-;_;g')

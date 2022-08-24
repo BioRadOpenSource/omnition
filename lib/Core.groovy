@@ -114,8 +114,8 @@ class Core {
         if (params.outputDir) {
             value = params.outputDir
             file = new File(value)
-            // Check if the specified directory exists and if has anything in it
-            if ((file.list() != null) && (file.list().length > 0)) {
+            // Check if the specified directory exists and if has anything in it other than the trace file
+            if ((file.list() != null) && (file.list().length > 0) && !onlyTraceFileInOutputDir(file)) {
                 // Check if the force flag was not supplied
                 if (!params.force) {
                     log.error("ERROR: The specified output directory is not empty. \
@@ -132,16 +132,16 @@ class Core {
     // groovylint-enable
     static boolean validateInputNames(directory) {
         return directory.listFiles().stream().allMatch {
-                    it.name.matches('[a-zA-Z0-9]+_S[0-9]+_L[0-9]{3}_R[0-9]+_001.f(ast)?q.gz') ||
+                    it.name.matches('[a-zA-Z0-9_]+_S[0-9]+_L[0-9]{3}_R[0-9]+_001.f(ast)?q.gz') ||
                      (!it.name.endsWith('fastq.gz') &&
                      !it.name.endsWith('fq.gz')) ||
                      it.directory }
     }
 
     // Function to ensure that species name / prefix match between fasta-gtf pairs
-    static void validateReferenceNames(fasta, gtf, log) {
+    static void validateReferenceNames(assayParams, log) {
         // Get just the prefix from the file names
-        List gtfSpeciesList = gtf
+        List gtfSpeciesList = assayParams.reference.gtf
             .stream()
             .filter(Objects::nonNull)
             .map(i -> i - ~/^\/.*\//)
@@ -149,7 +149,7 @@ class Core {
             .distinct()
             .collect()
 
-        List fastaSpeciesList = fasta
+        List fastaSpeciesList = assayParams.reference.fasta
             .stream()
             .filter(Objects::nonNull)
             .map(i -> i - ~/^\/.*\//)
@@ -159,9 +159,9 @@ class Core {
 
         // The prefixes should match and be in the same order
         if (gtfSpeciesList == (fastaSpeciesList)) {
-            log.info('INFO: fasta and gtf match')
+            log.info("INFO: [$assayParams.assay] FASTA and GTF files match.")
         } else {
-            log.error('ERROR: fasta and gtf prefixes do not match, exiting')
+            log.error("ERROR: [$assayParams.assay] FASTA and GTF file prefixes do not match.")
             System.exit(1)
         }
     }
@@ -243,6 +243,19 @@ class Core {
             .collect()
 
         return sampleParamsList
+    }
+
+    // Function for checking if the only file in the output directory is a trace file
+    private static boolean onlyTraceFileInOutputDir(dir) {
+        File subDir = dir.listFiles()[0]
+
+        if (dir.list().length > 1 || !subDir.directory) {
+            return false
+        }
+        if (subDir.list().length > 1) {
+            return false
+        }
+        return subDir.listFiles()[0].toString().endsWith('trace.txt')
     }
 
      // Function for extracting prefixes from input read files

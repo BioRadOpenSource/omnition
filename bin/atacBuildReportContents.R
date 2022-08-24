@@ -94,7 +94,16 @@ atacPipelineSummaryTable <-
     tryCatch(
       expr = {
         # read metrics file
-        metrics <- read_csv(metrics_file)
+        metrics <- read_csv(metrics_file,
+          col_types = list(
+            sample = col_character(),
+            process = col_character(),
+            read = col_character(),
+            metric = col_character(),
+            count = col_double(),
+            value = col_double()
+          )
+        )
         # If multiplexed, the sample_id can represent multiple
         # fastq-ti and must be grouped
         if (multiplexed && sample_id == "SuperloadedSample") {
@@ -194,7 +203,7 @@ atacPipelineSummaryTable <-
             ),
             Value = case_when(
               !str_detect(Metric, "Reads with Valid Barcodes") ~ paste0(format(
-                round(Value, 1), nsmall = 1, trim = TRUE
+                round(Value, 1), nsmall = 1, trim = TRUE, scientific = FALSE
               ), "%"),
               TRUE ~ as.character(Value)
             )

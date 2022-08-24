@@ -6,7 +6,7 @@ import org.yaml.snakeyaml.Yaml
 
 process PUBLISH_PARAMETERS {
     container "bioraddbg/omnition-r:${workflow.manifest.version}"
-    publishDir "${params.reportsDir}", mode: 'copy', overwrite: true
+    publishDir "${params.reportsDir}", mode: 'move', overwrite: true
 
     if (workflow.profile == 'aws') {
         label 'small'
