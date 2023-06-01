@@ -2,51 +2,50 @@
 
 # Copyright 2020 Bio-Rad Laboratories, Inc.
 
-# Starting with image already containing conda
-FROM continuumio/miniconda3:4.7.12
+# Starting with image already containing mamba
+FROM mambaorg/micromamba:1.0-bullseye-slim
 
 # Building image using bash shell
 SHELL ["/bin/bash", "-c"]
 
-# Name of conda environment being created (must match env.yaml filename)
-ARG CONDA_ENV="omnition-archr"
+# Name of mamba environment being created (must match env.yaml filename)
+ARG MAMBA_ENV="omnition-archr"
 
 # Installing image dependencies
-RUN apt-get --allow-releaseinfo-change update && \
-    apt-get install -y procps=2:3.3.15-2 && \
-    apt-get clean -y
+USER root
+RUN apt-get --allow-releaseinfo-change update \
+    && apt-get install -y procps=2:3.3.17-5 gawk=1:5.1.0-1 \
+    && apt-get clean -y
 
-# Building the conda environment
-COPY $CONDA_ENV.yaml /opt/biorad/env/
-RUN conda env create -f /opt/biorad/env/$CONDA_ENV.yaml && \
-    conda clean -afy
+# Building the mamba environment
+COPY $MAMBA_ENV.yaml /opt/biorad/env/
+RUN micromamba create -f /opt/biorad/env/$MAMBA_ENV.yaml \
+    && micromamba clean -afy
 
 # Removing default acitvation commands and setting correct ones
-RUN rm root/.bashrc
-RUN echo "source /etc/container.bashrc" >> /etc/bash.bashrc && \
-    echo "set +u" > /etc/container.bashrc && \
-    echo ". /opt/conda/etc/profile.d/conda.sh" >> /etc/container.bashrc && \
-    echo "conda activate $CONDA_ENV" >> /etc/container.bashrc
-
-# Adding in an empty folder to the BSgenome package which is required but not always installed depending on the source
-RUN mkdir -p /opt/conda/envs/${CONDA_ENV}/lib/R/library/BSgenome/pkgtemplates/BSgenome_datapkg/inst/extdata
+RUN rm /root/.bashrc
+RUN echo "source /etc/container.bashrc" >> /etc/bash.bashrc \
+    && echo "set +u" > /etc/container.bashrc \
+    && echo 'eval "$(micromamba shell hook --shell=bash)"' >> /etc/container.bashrc \
+    && echo "micromamba activate $MAMBA_ENV" >> /etc/container.bashrc
 
 # Activating environment when using non-login, non-interactive shell
 ENV BASH_ENV /etc/container.bashrc
 ENV ENV /etc/container.bashrc
 
-# Install Archr prereqs
-RUN apt-get install -y libcairo2-dev && \
-    Rscript -e 'BiocManager::install("TFBSTools")' && \
-    Rscript -e 'devtools::install_github("immunogenomics/presto", ref = "e7c9c6b708584aa23e590c5722bb5d35442f183d", upgrade = "never" , repos = BiocManager::repositories())' && \
-    apt-get install -y libxt-dev &&\
-    apt-get clean -y
+# Adding empty folder required for the BSgenome package
+RUN mkdir -p /opt/conda/envs/${MAMBA_ENV}/lib/R/library/BSgenome/pkgtemplates/BSgenome_datapkg/inst/extdata
 
 # Install ArchR
-RUN Rscript -e 'devtools::install_github("GreenleafLab/ArchR", ref = "48dccf361bab6d9191a4d9b61e1317acfa71167c", upgrade = "never", repos = BiocManager::repositories())'
-# RUN Rscript -e 'ArchR::installExtraPackages()'
+RUN Rscript -e 'devtools::install_github("GreenleafLab/ArchR", ref = "v1.0.2", upgrade = "never", repos = BiocManager::repositories())'
+RUN apt-get update \
+    && apt-get install -y libcairo2-dev \
+    && Rscript -e 'install.packages("Cairo", repos = "http://cran.us.r-project.org")' \
+    && Rscript -e 'ArchR::installExtraPackages()'
+
+# Adding Bio-Rad bin to path
+ENV PATH /opt/biorad/bin/:$PATH
 
 # Setting default working directory
 # WARNING: This is not preserved by Singularity
 WORKDIR /opt/biorad/
-

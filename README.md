@@ -7,7 +7,7 @@ This analysis pipeline is designed to analyze single-cell ATAC-Seq data and comb
 * This software has been tested on the following Linux operating systems: 64-bit CentOS 7 and 8, and Ubuntu 18.04.6, 20.04 LTS, 21.04, and 21.10.
     * The software may run on additional Linux distrubitions and/or versions beyond these if they are able to run the dependencies and versions listed below, but these are not officially supported.
 * Internet connection
-* [Nextflow](https://github.com/nextflow-io/nextflow#quick-start) (>=21.04.0)
+* [Nextflow](https://github.com/nextflow-io/nextflow#quick-start) (21.04.0-22.10.3)
 * [Docker](https://docs.docker.com/engine/install/) (>=20.10.7) or [Singularity](https://sylabs.io/guides/3.6/user-guide/quick_start.html#quick-installation-steps) (>=3.6.4)
 
 > **NOTE:** If using Docker, your `USER` must be added to the [`docker` root user group](https://docs.docker.com/engine/install/linux-postinstall/) before executing the pipeline. On shared systems, such as HPC clusters, this may not be possible due to security risks and the pipeline should be executed using the Singularity profile (default) instead.
