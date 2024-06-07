@@ -5,21 +5,18 @@ Create an empty blocklist
 params.options = [:]
 
 process GENERATE_EMPTY_BLOCKLIST {
-    if (workflow.profile == 'aws') {
-        label 'small'
-  } else {
-        label 'cpu_xsmall'
-        label 'memory_xxsmall'
-    }
+    container "bioraddbg/omnition-core:${workflow.manifest.version}"
+    label 'cpu_xsmall'
+    label 'memory_xxsmall'
 
-  input:
-    val images_pulled
+    input:
+        val images_pulled
 
-  output:
-    path 'blocklist.bed', emit:bed
+    output:
+        path 'blocklist.bed', emit:bed
 
-  script:
+    script:
     '''
-  touch blocklist.bed
-  '''
+    touch blocklist.bed
+    '''
 }

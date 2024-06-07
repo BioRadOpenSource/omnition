@@ -1,0 +1,4 @@
+barcode,input_reads,genes,umi,transcripts,genic_reads,coding_reads,utr_reads,intronic_reads,intergenic_reads,rRNA_reads,mitochondrial_reads,unassigned_ambiguous_reads,unassigned_low_mapping_qual_reads,unassigned_other_reads,input_DemoReferenceRnaMixedHomoSapiens_S1_reads,input_DemoReferenceRnaMixedMusMusculus_S2_reads,DemoReferenceRnaMixedHomoSapiens_S1_umi,DemoReferenceRnaMixedMusMusculus_S2_umi
+Sample2BC07707N2,73,30,57,34,34,24,8,2,23,0,0,0,1,15,3,70,0,34
+Sample2BC18095N2,67,27,57,31,31,8,15,8,26,0,0,0,3,7,5,62,3,28
+Sample2BC08933N2,69,34,55,39,39,24,10,5,16,0,0,0,1,13,5,64,2,37

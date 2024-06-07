@@ -21,6 +21,9 @@ parser$add_argument("-p",
 
 parser <- parser$parse_args()
 
+# Set data.table threading
+setDTthreads()
+
 countsFile <- parser$countsFile
 outDir <- parser$output_directory
 if (!dir.exists(outDir)) {

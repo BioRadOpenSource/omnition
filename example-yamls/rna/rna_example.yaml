@@ -1,0 +1,8 @@
+rna:
+  input: "PATH_TO_INPUT_DIR"
+  output: "PATH_TO_OUTPUT_DIR"
+  workflow: "full"
+  reference:
+    directory: "PATH_TO_REFERENCE_DIR"
+    fasta: "PATH_TO_REFERENCE_DIR/REFERENCE_FASTA"
+    gtf: "PATH_TO_REFERENCE_DIR/REFERENCE_GTF"

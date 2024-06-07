@@ -1,0 +1,14 @@
+atac:
+  input: "PATH_TO_INPUT_DIR"
+  output: "PATH_TO_OUTPUT_DIR"
+  workflow: "full"
+  mixed: true
+  reference:
+    directory: "PATH_TO_REFERENCE_DIR"
+    fasta:
+      s1: "PATH_TO_REFERENCE_DIR/SPECIES_1_REFERENCE_FASTA"
+      s2: "PATH_TO_REFERENCE_DIR/SPECIES_2_REFERENCE_FASTA"
+    gtf:
+      s1: "PATH_TO_REFERENCE_DIR/SPECIES_1_REFERENCE_GTF"
+      s2: "PATH_TO_REFERENCE_DIR/SPECIES_2_REFERENCE_GTF"
+    blocklist: "PATH_TO_REFERENCE_DIR/REFERNCE_BLOCKLIST"

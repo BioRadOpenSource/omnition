@@ -7,24 +7,20 @@ params.options = [:]
 process GENERATE_GENOME_SIZES {
     container "bioraddbg/omnition-core:${workflow.manifest.version}"
     publishDir "${params.options.reference.directory}", mode: 'copy', overwrite: true
-    if (workflow.profile == 'aws') {
-        label 'small'
-  } else {
-        label 'cpu_medium'
-        label 'memory_xxsmall'
-    }
+    label 'cpu_medium'
+    label 'memory_xxsmall'
 
-  input:
+    input:
     path fasta
     val images_pulled
 
-  output:
+    output:
     path 'genome.sizes', emit: size
 
-  script:
+    script:
     """
-  samtools faidx ${fasta}
+    samtools faidx ${fasta}
 
-  cut -f1,2 *.fa.fai > genome.sizes
-  """
+    cut -f1,2 *.fa.fai > genome.sizes
+    """
 }

@@ -1,0 +1,8 @@
+DropBarcode,totalNuclearFrags,uniqueNuclearFrags,totalMitoFrags,uniqueMitoFrags,totalDemoRefAtachg38Frags,uniqueDemoRefAtachg38Frags,totalDemoRefAtacmm10Frags,uniqueDemoRefAtacmm10Frags,duplicateProportion,librarySize,meanInsertSize,medianInsertSize,tssProportion,FRIP
+DemoAtacNormal_S1_BC1_N01,140,139,1,1,16,16,123,123,0.007,9753,135.9,103,0.2374,0
+DemoAtacNormal_S1_BC2_N02,229,226,0,0,20,20,208,206,0.013,8664,126,98,0.2389,0
+DemoAtacNormal_S1_BC3_N01,96,96,0,0,10,10,86,86,0,48000000048,129.1,82.5,0.2917,0
+DemoAtacNormal_S1_BC4_N01,94,93,1,1,85,85,8,8,0.011,4387,156.5,115,0.2258,0
+DemoAtacNormal_S1_BC5_N01,79,78,1,1,13,13,65,65,0.013,3094,131.5,98,0.3333,0
+DemoAtacNormal_S1_BC6_N01,79,78,0,0,23,23,55,55,0.013,3094,82.8,49.5,0.4872,0
+DemoAtacNormal_S1_BC7_N01,70,69,3,3,8,8,61,61,0.014,2427,136,118,0.3623,0

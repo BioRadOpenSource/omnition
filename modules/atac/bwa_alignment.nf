@@ -7,16 +7,11 @@ params.options = [:]
 process BWA_ALIGNMENT {
     tag "${sampleId}"
     container "bioraddbg/omnition-core:${workflow.manifest.version}"
-    if (workflow.profile == 'aws') {
-        label 'xlarge'
-    } else {
-        label 'cpu_xlarge'
-        label 'memory_xlarge'
-    }
+    label 'cpu_xlarge'
+    label 'memory_xlarge'
 
     input:
-    tuple val(sampleId), path(fastq)
-    path reference
+    tuple val(sampleId), path(fastq), path(reference)
     val images_pulled
 
     output:

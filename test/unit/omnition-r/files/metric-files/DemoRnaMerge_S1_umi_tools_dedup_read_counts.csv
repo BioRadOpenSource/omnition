@@ -1,0 +1,3 @@
+sample,process,metric,value
+DemoRnaMerge_S1,umi_tools_dedup,input,23180
+DemoRnaMerge_S1,umi_tools_dedup,output,22960

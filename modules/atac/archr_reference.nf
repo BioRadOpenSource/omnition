@@ -6,13 +6,9 @@ params.options = [:]
 
 process ARCHR_REFERENCE {
     container "bioraddbg/omnition-archr:${workflow.manifest.version}"
-    publishDir "${params.options.reference.directory}/archr", mode: 'copy'
-    if (workflow.profile == 'aws') {
-        label 'xlarge'
-    } else {
-        label 'cpu_small'
-        label 'memory_large'
-    }
+    publishDir "${params.options.reference.directory}/archr", mode: 'copy', overwrite: true
+    label 'cpu_small'
+    label 'memory_large'
 
     input:
     path fasta

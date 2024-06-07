@@ -6,14 +6,9 @@ params.options = [:]
 
 process BUILD_REPORT_CONTENTS {
     container "bioraddbg/omnition-r:${workflow.manifest.version}"
-    if (workflow.profile == 'aws') {
-        label 'small'
-    } else {
-        label 'cpu_medium'
-        label 'memory_xxsmall'
-    }
-
-    publishDir "${params.reportsDir}", mode: 'copy'
+    publishDir "${params.options.reportsDir}", mode: 'copy', overwrite: true
+    label 'cpu_medium'
+    label 'memory_xxsmall'
 
     input:
     path input
@@ -27,8 +22,9 @@ process BUILD_REPORT_CONTENTS {
     script:
     """
     mkdir tmp
-    echo ${params} | sed 's/,/\\n/g' | sed 's/:/,/g' | tr -d '[' | tr -d ']' | tail -n +3 > ./tmp/params.csv
+    echo ${params} | sed 's/\\[/\\[\\n/g' | sed 's/,/\\n/g' | sed 's/:/,/g' |
+        tr -d '[' | tr -d ']' | tail -n +3 > ./tmp/params.csv
 
-    atacBuildReportContents.R ./ ./ ${params.options.barcodedTn5}
+    atacBuildReportContents.R ./ ./ "${params.catac != null && params.atac == null}"
     """
 }

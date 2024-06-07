@@ -5,13 +5,10 @@ Combining mixed species blocklists together
 params.options = [:]
 
 process COMBINE_BLOCKLISTS {
-    if (workflow.profile == 'aws') {
-        label 'small'
-    } else {
-        label 'cpu_xsmall'
-        label 'memory_xxsmall'
-    }
+    container "bioraddbg/omnition-core:${workflow.manifest.version}"
     errorStrategy 'terminate'
+    label 'cpu_xsmall'
+    label 'memory_xxsmall'
 
     input:
     path blocklist

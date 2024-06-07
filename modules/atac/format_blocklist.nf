@@ -6,13 +6,9 @@ params.options = [:]
 
 process FORMAT_BLOCKLIST {
     container "bioraddbg/omnition-core:${workflow.manifest.version}"
-    if (workflow.profile == 'aws') {
-        label 'small'
-    } else {
-        label 'cpu_xsmall'
-        label 'memory_xxsmall'
-    }
     errorStrategy 'terminate'
+    label 'cpu_xsmall'
+    label 'memory_xxsmall'
 
     input:
     path blocklist

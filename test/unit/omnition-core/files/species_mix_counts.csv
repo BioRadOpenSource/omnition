@@ -1,0 +1,4 @@
+DropBarcode,totalNuclearFrags,uniqueNuclearFrags,totalMitoFrags,uniqueMitoFrags,totalHomo_sapiensFrags,uniqueHomo_sapiensFrags,totalMus_musculusFrags,uniqueMus_musculusFrags,duplicateProportion,librarySize,meanInsertSize,medianInsertSize,tssProportion,FRIP,Percent_Mus_musculus_fragments,Percent_Homo_sapiens_fragments,cellType
+E36NoFixA_S1_Tn5-CAACTGTG_BC00292_N02,115559,79827,0,0,86347,79788,0,0,0.309,145942,105.3,96,0.226,0,0,1,Homo_sapiens
+E36NoFixA_S1_Tn5-CAACTGTG_BC00316_N01,84991,53692,808,808,53660,53658,53660,53658,0.368,84868,86,72,0.6003,0,0.5,0.5,mixed
+E36NoFixA_S1_Tn5-CAACTGTG_BC00436_N01,84848,47524,640,639,0,0,47494,47491,0.44,65385,89.9,78,0.4807,0,1,0,Mus_musculus

@@ -214,6 +214,8 @@ parser$add_argument("--loaded", type = "integer",
 #nolint end
 args <- parser$parse_args()
 
+# Set data.table threading
+setDTthreads()
 
 # Read in data
 if (!is.null(args$count_matrix)) {

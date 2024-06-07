@@ -1,5 +1,4 @@
 #!/usr/bin/env Rscript
-# Caleb Lareau
 # Bio-Rad Laboratories, Inc.
 
 options(warn = -1)
@@ -76,6 +75,8 @@ speciesMix <- args[i + 5]
 oneone <- args[i + 6]
 barcodeTranslateFile <- args[i + 7]
 
+# Set data.table threading
+setDTthreads()
 
 # Import fragments
 frag_df <- fread(fragsFile, header = FALSE)

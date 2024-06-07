@@ -7,22 +7,18 @@ params.options = [:]
 process MERGE_REANN_READ_COUNTS {
     tag "${sampleId}"
     container "bioraddbg/omnition-r:${workflow.manifest.version}"
-    if (workflow.profile == 'aws') {
-        label 'medium'
-    } else {
-        label 'cpu_small'
-        label 'memory_xxsmall'
-    }
+    label 'cpu_small'
+    label 'memory_xxsmall'
 
-  input:
+    input:
     tuple val(sampleId), path(counts_files)
     val images_pulled
 
-  output:
+    output:
     tuple val(sampleId), path('*_merged_reannotate_read_counts.csv'), emit: count
 
-  script:
+    script:
     '''
-  atacMergeReannCounts.R ./
-  '''
+    atacMergeReannCounts.R ./
+    '''
 }

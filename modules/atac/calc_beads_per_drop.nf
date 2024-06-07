@@ -7,16 +7,8 @@ params.options = [:]
 process CALCULATE_BEADS_PER_DROP {
     tag "${sampleId}"
     container "bioraddbg/omnition-r:${workflow.manifest.version}"
-    if (workflow.profile == 'aws') {
-        label 'small'
-    } else {
-        label 'cpu_xsmall'
-        label 'memory_xxsmall'
-    }
-
-    publishDir "${params.resultsDir}/${sampleId}/cellFilter",
-        pattern: '*.cell_data.csv', mode: 'copy', enabled: !params.atac.barcodedTn5,
-        overwrite: true
+    label 'cpu_xsmall'
+    label 'memory_xxsmall'
 
     input:
     tuple val(sampleId), path(qc)

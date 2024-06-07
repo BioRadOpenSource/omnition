@@ -1,17 +1,14 @@
 /*
- * Filtering GTF entries to only contain chromosomes/contigs in the FASTA file
- */
+Filtering GTF entries to only contain chromosomes/contigs in the FASTA file
+*/
 
 params.options = [:]
 
 process FILTER_REFERENCES {
+    container "bioraddbg/omnition-core:${workflow.manifest.version}"
     publishDir "${params.options.reference.directory}/", mode: 'copy', overwrite: true
-    if (workflow.profile == 'aws') {
-        label 'small'
-    } else {
-        label 'cpu_xsmall'
-        label 'memory_xxsmall'
-    }
+    label 'cpu_xsmall'
+    label 'memory_small'
 
     input:
     path fasta

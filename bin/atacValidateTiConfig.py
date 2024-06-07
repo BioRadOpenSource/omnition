@@ -39,7 +39,6 @@ options.add_argument(
 
 # Imports and parses the TI config
 def importConfig(config):
-
     samples = list()
     fastqs = set()
     TIs = set()
@@ -51,19 +50,22 @@ def importConfig(config):
         for row in readconfig:
             if "sample" not in row.keys():
                 print(
-                    "[ERROR] The config file should be a CSV formatted with three columns: sample, fastq, and ti",
+                    "[ERROR] The config file should be a CSV formatted with three "
+                    "columns: sample, fastq, and ti",
                     ", ".join(missing_fastq),
                 )
                 exit(1)
             if "fastq" not in row.keys():
                 print(
-                    "[ERROR] The config file should be a CSV formatted with three columns: sample, fastq, and ti",
+                    "[ERROR] The config file should be a CSV formatted with three "
+                    "columns: sample, fastq, and ti",
                     ", ".join(missing_fastq),
                 )
                 exit(1)
             if "ti" not in row.keys():
                 print(
-                    "[ERROR] The config file should be a CSV formatted with three columns: sample, fastq, and ti",
+                    "[ERROR] The config file should be a CSV formatted with "
+                    "three columns: sample, fastq, and ti",
                     ", ".join(missing_fastq),
                 )
                 exit(1)
@@ -77,7 +79,6 @@ def importConfig(config):
 
 # Imports and parses the reference index list
 def importTIindex(index):
-
     TIdict = dict()
     TIlist = list()
 
@@ -94,7 +95,6 @@ def importTIindex(index):
 
 # Function for importing list of provided sample IDs
 def importSampleList(sample_list_arg):
-
     with open(sample_list_arg, "r") as f:
         sample_string = f.readline()
         sample_list = (
@@ -108,9 +108,9 @@ def importSampleList(sample_list_arg):
     return sample_list
 
 
-# Function for checking if the fastqs in the config file are present and account for all fastqs provided
+# Function for checking if the fastqs in the config
+# file are present and account for all fastqs provided
 def checkSamples(config_fastqs, sample_list, override):
-
     # Check if any fastqs in the config file are missing
     missing_fastq = list(config_fastqs - set(sample_list))
     if len(missing_fastq) != 0:
@@ -125,7 +125,8 @@ def checkSamples(config_fastqs, sample_list, override):
     if override != "true":
         if len(unaccounted_fastq) != 0:
             print(
-                "[ERROR] The following fastqs were not assigned to a sample in the config:",
+                "[ERROR] The following fastqs were not assigned to a "
+                "sample in the config:",
                 ", ".join(unaccounted_fastq),
             )
             exit(1)
@@ -133,7 +134,6 @@ def checkSamples(config_fastqs, sample_list, override):
 
 # Function for checking if each TI fastq pair is used only once
 def checkTIfastqPairs(TIfastqPairs):
-
     check = set(TIfastqPairs)
 
     if len(check) != len(TIfastqPairs):
@@ -142,7 +142,8 @@ def checkTIfastqPairs(TIfastqPairs):
             if TIfastqPairs.count(item) > 1:
                 multiples.append(item)
         print(
-            "[ERROR] The following TI and fastq pairs were used more than once in the config:",
+            "[ERROR] The following TI and fastq pairs were used more "
+            "than once in the config:",
             ", ".join(multiples),
         )
         exit(1)
@@ -150,7 +151,6 @@ def checkTIfastqPairs(TIfastqPairs):
 
 # Function for checkng if the TIs listed in the config are valid TIs
 def checkTIindex(TIs, TIlist):
-
     errors = []
 
     for index in TIs:
@@ -171,11 +171,12 @@ def outputCSV(outfile, csvdict, TIdict):
         for row in csvdict:
             row["sequence"] = TIdict[row["ti"]]
             writer.writerow(row)
+    with open("TIlen.txt", "w") as file:
+        file.write(str(len(TIdict.popitem()[1])))
 
 
 # Executing script
 if __name__ == "__main__":
-
     # Establish inputs
     args = parser.parse_args()
     outfile = os.path.basename(args.config).split(".")[0] + ".validated.csv"

@@ -1,0 +1,3 @@
+sample,process,metric,value
+DemoRnaDropletMixed_S1,downsample_cDNA,input,80937
+DemoRnaDropletMixed_S1,downsample_cDNA,output,80000

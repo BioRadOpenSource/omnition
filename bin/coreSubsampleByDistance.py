@@ -25,7 +25,8 @@ def getargs():
         required=False,
         type=int,
         default=0,
-        help="The index of the column with the x values to use for the distance calculations",
+        help="The index of the column with the x values to use "
+        "for the distance calculations",
     )
     options.add_argument(
         "-y",
@@ -33,7 +34,8 @@ def getargs():
         required=False,
         default=1,
         type=int,
-        help="The index of the column with the y values to use for the distance calculations",
+        help="The index of the column with the y values to use "
+        "for the distance calculations",
     )
 
     return parser.parse_args()
@@ -103,16 +105,20 @@ def downsample(xs, ys, maxdist, inputcsv, header):
             # skip the header in the input rows
             next(input_rows)
             i = 0
-            # Note: i starts at 0 becuase the indices in accepted_indices correspond to the indices of the
-            # xs and ys objects, which skip the header and use index 0 for the first row of data
+            # Note: i starts at 0 becuase the indices in accepted_indices
+            # correspond to the indices of the
+            # xs and ys objects, which skip the header and use
+            # index 0 for the first row of data
             rows_added = 0
             for line in input_rows:
                 if i in accepted_indices:
                     data = line.strip()
                     cols = data.split(",")
                     output_file.write(line)
-                    # This probably adds a lot of time but I'm worried about off-by-one error
-                    # Comparing an ys and downys values are floats, rounding in case there's a minor difference
+                    # This probably adds a lot of time but I'm worried
+                    # about off-by-one error
+                    # Comparing an ys and downys values are floats, rounding
+                    # in case there's a minor difference
                     # in one of the last decimal places
                     check_val = round(float(cols[args.y_column]), 4)
                     if not (check_val in rounded_downys):

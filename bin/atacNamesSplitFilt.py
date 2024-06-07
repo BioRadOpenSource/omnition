@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# Caleb Lareau
 # Bio-Rad Laboratories, Inc.
 
 
@@ -11,7 +10,8 @@ from optparse import OptionParser
 from collections import Counter, defaultdict
 
 opts = OptionParser()
-usage = "usage: %prog [options] [inputs] Script to process aligned .bam files to 1) split by chromosome and 2) report read ID with bead barcode"
+usage = "usage: %prog [options] [inputs] Script to process aligned .bam files to 1) \
+split by chromosome and 2) report read ID with bead barcode"
 opts = OptionParser(usage=usage)
 
 opts.add_option("--input", "-i", help="Name of the .bam file to parse")
@@ -83,7 +83,7 @@ def writeBeadReadName(two):
     with gzip.open(filename, "wt") as out_write:
         for read in Itr:
             # only consider reads with sufficient mapping quality
-            if read.mapping_quality > minmapq:
+            if read.mapping_quality >= minmapq:
                 read_barcode = getBarcode(read.tags)
                 read_name = read.query_name
                 value = read_name + "\t" + read_barcode + "\n"
@@ -135,8 +135,8 @@ def getChromosomesWithAlignments(bamname, minmapq, max_insert):
     for chrom in chroms2use:
         for read1, read2 in read_pair_generator(bam, chrom):
             if (
-                read1.mapping_quality > minmapq
-                and read2.mapping_quality > minmapq
+                read1.mapping_quality >= minmapq
+                and read2.mapping_quality >= minmapq
                 and abs(read1.template_length) < max_insert
                 and abs(read2.template_length) < max_insert
             ):

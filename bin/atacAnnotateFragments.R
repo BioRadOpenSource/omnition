@@ -1,5 +1,4 @@
 #!/usr/bin/env Rscript
-# Caleb Lareau
 # Bio-Rad Laboratories, Inc.
 
 options(warn = -1)
@@ -31,6 +30,9 @@ frag_bedpe_file <- args[nn - 3]
 read_bead_file <- args[nn - 2]
 annotated_out_file <- args[nn - 1]
 unique_count_out_file <- args[nn]
+
+# Set data.table threading
+setDTthreads()
 
 # Import frags and annotate with bead
 frags <-

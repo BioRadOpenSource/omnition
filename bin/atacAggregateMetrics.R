@@ -1,9 +1,7 @@
 #!/usr/bin/env Rscript
-# aggregateMetrics.R
 # Bio-Rad Laboratories, Inc.
 
 # Purpose: Aggregate and parse sample metrics as a tidy df
-# Usage: aggregateMetrics.R INPUTDIR
 
 # Setting environment --------------------------------------
 # -----------------------------------
@@ -114,28 +112,28 @@ read_fastqc_files <- function(input_dir) {
 }
 
 # Function for reading input, output, and bad reads from DEAD barcode stats
-read_dead_files <- function(input_dir) {
+read_debarcoder_files <- function(input_dir) {
   # Dead metadata has a column for the sample name,
   # so we don't need a per-sample parsing function
   # Creating file lists
   r1_file_pattern <- "_R1_barcode_stats\\.tsv"
-  r1_dead_files <-
+  r1_debarcoder_files <-
     list.files(path = input_dir,
                pattern = r1_file_pattern,
                full.names = TRUE)
   r2_file_pattern <- "_R2_barcode_stats\\.tsv"
-  r2_dead_files <-
+  r2_debarcoder_files <-
     list.files(path = input_dir,
                pattern = r2_file_pattern,
                full.names = TRUE)
   # If files are present
-  if (length(r1_dead_files) > 0) {
+  if (length(r1_debarcoder_files) > 0) {
     # Importing and aggregating files into single df
-    dead_df <-
-      map_dfr(r1_dead_files, read_tsv, col_types = cols()) %>%
+    debarcoder_df <-
+      map_dfr(r1_debarcoder_files, read_tsv, col_types = cols()) %>%
       rename(metric = category) %>%
       add_column(read = "r1", .after = 1) %>%  # Adding col to specify read no.
-      add_column(process = "dead", .after = 1) %>% # Denoting process source
+      add_column(process = "debarcoder", .after = 1) %>% # Denoting process source
       add_column(value = NA, .after = 4) %>% # Hide non-customer facing fields
       # filter out for just the "total" and "good" metrics
       filter(metric %in% c("total", "good")) %>%
@@ -145,12 +143,12 @@ read_dead_files <- function(input_dir) {
         TRUE ~ metric
       ))
     # If there are files for R2, i.e. an ATAC TI run
-    if (length(r2_dead_files)) {
-      r2_dead_df <-
-        map_dfr(r2_dead_files, read_tsv, col_types = cols()) %>%
+    if (length(r2_debarcoder_files)) {
+      r2_debarcoder_df <-
+        map_dfr(r2_debarcoder_files, read_tsv, col_types = cols()) %>%
         rename(metric = category) %>%
         add_column(read = "r2", .after = 1) %>%  # Adding col to specify read no.
-        add_column(process = "dead", .after = 1) %>% # Denoting process source
+        add_column(process = "debarcoder", .after = 1) %>% # Denoting process source
         add_column(value = NA, .after = 4) %>% # Hide non-customer facing fields
         # filter out for just the "total" and "good" metrics
         filter(metric %in% c("total", "good")) %>%
@@ -159,11 +157,11 @@ read_dead_files <- function(input_dir) {
           metric == "good" ~ "output",
           TRUE ~ metric
         ))
-      dead_df <- rbind(dead_df, r2_dead_df)
+      debarcoder_df <- rbind(debarcoder_df, r2_debarcoder_df)
     }
-    return(dead_df)
+    return(debarcoder_df)
   }
-  return(dead_df)
+  return(debarcoder_df)
 }
 
 
@@ -410,8 +408,9 @@ parse_deconvolution_files <- function(sample_id, input_dir_chr) {
   # Set fragment_thresh to the bead threshold from deconvolution_params
   fragment_thresh <-
     deconvolution_params$V2[deconvolution_params$V1 == "bead_threshold"]
-  # Gets the total number of barcodes in barcode quants that are above fragment_thresh
-  above_knee <- barcode_quants[V2 >= fragment_thresh, .N]
+  # Set above_knee to the above knee from deconvolution_params
+  above_knee <-
+    deconvolution_params$V2[deconvolution_params$V1 == "above_knee"]
   # Set jaccard_thresh to the jaccard threshold from deconvolution_params
   jaccard_thresh <-
     deconvolution_params$V2[deconvolution_params$V1 == "jaccard_threshold"]
@@ -661,7 +660,7 @@ aggregate_data_atac <- function(input_dir_chr) {
     read_fastqc_files(input_dir_chr),
     # Importing all metric files and formatting as a list of dfs
     read_cutadapt_headcrop_files(input_dir_chr),
-    read_dead_files(input_dir_chr),
+    read_debarcoder_files(input_dir_chr),
     read_alignment_qc_metrics_files(input_dir_chr),
     read_flagstat_files(input_dir_chr),
     read_idxstats_files(input_dir_chr),
@@ -858,9 +857,12 @@ aggregate_data_atac <- function(input_dir_chr) {
 # Analysis -----------------------------------------------
 #-------------------------------------
 
+# Set data.table threading
+setDTthreads()
+
 # Importing data and aggregating together
 
-if (pipelineType == "ATAC") {
+if (pipelineType == "ATAC" | pipelineType == "cATAC") {
   cat("[PROGRESS]: Importing and aggregating ATAC sample metrics.\n")
   data <- aggregate_data_atac(inputDir)
 }

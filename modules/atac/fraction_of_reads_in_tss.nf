@@ -7,16 +7,11 @@ params.options = [:]
 process FRACTION_OF_READS_IN_TSS {
     tag "${sampleId}"
     container "bioraddbg/omnition-core:${workflow.manifest.version}"
-    if (workflow.profile == 'aws') {
-        label 'small'
-    } else {
-        label 'cpu_xsmall'
-        label 'memory_xsmall'
-    }
+    label 'cpu_xsmall'
+    label 'memory_xsmall'
 
     input:
-    tuple val(sampleId), path(bam), path(index)
-    path reference_tss
+    tuple val(sampleId), path(bam), path(index), path(reference_tss)
     val images_pulled
 
     output:

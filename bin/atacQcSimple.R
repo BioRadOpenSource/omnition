@@ -1,5 +1,4 @@
 #!/usr/bin/env Rscript
-# Caleb Lareau
 # Bio-Rad Laboratories, Inc.
 
 options(warn = -1)
@@ -30,6 +29,9 @@ tempQcIn <- args[i + 1]
 mitoIn <- args[i + 2]
 firstQCout <- args[i + 3]
 species_mix <- args[i + 4]
+
+# Set data.table threading
+setDTthreads()
 
 # For devel only
 if (FALSE) {

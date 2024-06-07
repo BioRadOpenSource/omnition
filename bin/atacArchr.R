@@ -12,26 +12,24 @@ suppressPackageStartupMessages(library(tidyverse))
 suppressPackageStartupMessages(library(BSgenome.ref.na.1.0))
 
 parser <- ArgumentParser()
-parser$add_argument("input_dir", nargs = 1,
- help = "Path to directory containing mtx.gz formatted fragments files.")
 parser$add_argument("-g", "--gtf", help = "Path to gtf file.")
 parser$add_argument("-b", "--blocklist", help = "Path to blocklist bed file.")
 parser$add_argument("-p", "--peaks", help = "Path to peaks bed file.")
 parser$add_argument("-c", "--cpus", default = 1, type = "integer",
  help = "Number of CPUs to use in multiprocessing.")
-parser$add_argument("-o", "--output_directory", default = getwd(),
- help = "Directory to write output files. [Default: Current working directory]")
 parser$add_argument("-t", "--tile_size", default = 500,
  help = "Bin size for genome tiling.")
+parser$add_argument("-d", "--demo", help = "Boolean to indicate if data is demo data.")
 parser <- parser$parse_args()
 
-input_dir <- parser$input_dir
 gtf <- parser$gtf
 blocklist <- parser$blocklist
 cpus <- parser$cpus
-output_dir <- parser$output_directory
 peaks <- parser$peaks
 tile_size <- parser$tile_size
+demo <- parser$demo
+
+demo <- demo == "True"
 
 ## Setting default number of Parallel threads to 16.
 addArchRThreads(threads = as.numeric(cpus))
@@ -66,12 +64,23 @@ geneAnnotation <- createGeneAnnotation(TSS =
   exons = granges[mcols(granges)[, c("type")] == "exon"],
   genes = granges[mcols(granges)[, c("type")] == "transcript"])
 
-
 ## Setting path to samples and getting sample names
 sample <- list.files(pattern = "\\.final.bam$")
 samplename <-
   gsub(".final.bam", "", list.files(pattern = "\\.final.bam$"))
 
+## Demo data specific settings
+if (demo) {
+  addGeneScoreMat <- TRUE
+
+  geneScoreMatList <- list(useGeneBoundaries = FALSE,
+    extendUpstream = c(1, 5e+05),
+    extendDownstream = c(1, 5e+05))
+} else {
+  addGeneScoreMat <- FALSE
+
+  geneScoreMatList <- list(useGeneBoundaries = TRUE)
+}
 
 ## Creating arrow files
 ArrowFiles <- createArrowFiles(
@@ -83,9 +92,10 @@ ArrowFiles <- createArrowFiles(
   minFrags = 1,
   addTileMat = TRUE,
   TileMatParams = list(tileSize = tile_size),
-  addGeneScoreMat = TRUE,
+  addGeneScoreMat = addGeneScoreMat,
+  GeneScoreMatParams = geneScoreMatList,
   excludeChr = c("None"),
-  bcTag = "DB",
+  bcTag = "XC",
   # threads = 1,
   subThreading = FALSE,
   bamFlag = list(
@@ -106,32 +116,19 @@ proj <- ArchRProject(
   # copy for later usage. Can be removed to lower memory usage
 )
 
-## Set parameters for very small datasets, otherwise use defaults
-if (median(proj@cellColData$nFrags) < 100 || length(proj$cellNames) < 40) {
-  cat("[WARNING]: Low genome coverage detected.
-   Clustering will be based on Gene Scores.\n")
-  LSImatrix <- "GeneScoreMatrix"
-  LSIselection <- "var"
-  LSIbinarize <- FALSE
-  LSIvarFeatures <- 2500
-  LSIdimsToUse <- c(1:4)
-  LSIiterations <- 1
-  UMAPneighbors <- 4
-  UMAPverbosity <- FALSE
+## Set parameters for umap
+LSImatrix <- "TileMatrix"
+LSIselection <- "top"
+LSIbinarize <- TRUE
+LSIvarFeatures <- 25000
+LSIdimsToUse <- c(1:30)
+LSIiterations <- 2
+if (length(proj$cellNames) < 40) {
+  UMAPneighbors <- length(proj$cellNames)
 } else {
-  LSImatrix <- "TileMatrix"
-  LSIselection <- "top"
-  LSIbinarize <- TRUE
-  LSIvarFeatures <- 25000
-  LSIdimsToUse <- c(1:30)
-  LSIiterations <- 2
-  if (length(proj$cellNames) < 40) {
-    UMAPneighbors <- length(proj$cellNames)
-  } else {
-    UMAPneighbors <- 40
-  }
-  UMAPverbosity <- TRUE
+  UMAPneighbors <- 40
 }
+UMAPverbosity <- TRUE
 
 ## Dimensionality reduction
 proj <- addIterativeLSI(

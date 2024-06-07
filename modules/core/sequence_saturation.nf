@@ -5,25 +5,26 @@ Calculate sequence saturation for each sample
 params.options = [:]
 
 process SEQUENCE_SATURATION {
-    tag "${sample_id}"
+    tag "${sampleId}"
     container "bioraddbg/omnition-r:${workflow.manifest.version}"
-    if (workflow.profile == 'aws') {
-        label 'large'
-    } else {
-        label 'cpu_medium'
-        label 'memory_medium'
-    }
+    label 'cpu_medium'
+    label 'memory_medium'
 
     input:
-    tuple val(sample_id), path(fragments), path(summary)
+    tuple val(sampleId), path(fragments), path(summary)
     val assay
     val images_pulled
 
     output:
-    tuple val(sample_id), path("*_sequence_saturation.csv"), emit: results
+    tuple val(sampleId), path("*_sequence_saturation.csv"), emit: results
 
     script:
+    assay = (assay == "3' RNA Droplet") ? "RNA" : assay
     """
-    coreSequenceSaturation.R ${sample_id} ${fragments} ${summary} "${assay}"
+    coreSequenceSaturation.R \
+        --sample_id ${sampleId} \
+        --feature_counts_file ${fragments} \
+        --metrics_file ${summary} \
+        --assay "${assay}"
     """
 }

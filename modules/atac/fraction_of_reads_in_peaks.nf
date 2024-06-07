@@ -7,12 +7,8 @@ params.options = [:]
 process FRACTION_OF_READS_IN_PEAKS {
     tag "${sampleId}"
     container "bioraddbg/omnition-core:${workflow.manifest.version}"
-    if (workflow.profile == 'aws') {
-        label 'small'
-    } else {
-        label 'cpu_xsmall'
-        label 'memory_xsmall'
-    }
+    label 'cpu_xsmall'
+    label 'memory_xsmall'
 
     input:
     tuple val(sampleId), path(bam), path(index), path(bed)

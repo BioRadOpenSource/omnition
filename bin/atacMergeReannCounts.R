@@ -1,9 +1,7 @@
 #!/usr/bin/env Rscript
-# atacMergeReannCounts.R
 # Bio-Rad Laboratories, Inc.
 
 # Purpose: Merge
-# Usage: atacMergeReannCounts.R INPUTDIR
 
 # Setting environment -------------------------------------
 # ------------------------------------

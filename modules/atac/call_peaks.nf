@@ -7,16 +7,11 @@ params.options = [:]
 process CALL_PEAKS {
     tag "${sampleId}"
     container "bioraddbg/omnition-core:${workflow.manifest.version}"
-    if (workflow.profile == 'aws') {
-        label 'large'
-    } else {
-        label 'cpu_xsmall'
-        label 'memory_medium'
-    }
-
-    publishDir "${params.resultsDir}/${sampleId}/peaks",
-        pattern: '*_{summits.bed, peaks.narrowPeak, peaks.xls}', mode: 'copy',
+    publishDir "${params.options.resultsDir}/${sampleId}/peaks",
+        pattern: '*_{summits.bed,peaks.narrowPeak,peaks.xls}', mode: 'copy',
         overwrite: true
+    label 'cpu_xsmall'
+    label 'memory_medium'
 
     input:
     tuple val(sampleId), path(bam), path(index)
@@ -29,12 +24,12 @@ process CALL_PEAKS {
     script:
     """
     macs2 callpeak \
-      --treatment ${bam} \
-      --format BAMPE \
-      --name ${sampleId} \
-      --nomodel \
-      --nolambda \
-      --call-summits \
-      --outdir ./
+        --treatment ${bam} \
+        --format BAMPE \
+        --name ${sampleId} \
+        --nomodel \
+        --nolambda \
+        --call-summits \
+        --outdir ./
     """
 }

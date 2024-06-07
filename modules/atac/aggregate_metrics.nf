@@ -5,14 +5,12 @@ Aggregating all sample metrics together into a tidy format
 params.options = [:]
 
 process AGGREGATE_METRICS {
-    beforeScript 'ulimit -Ss unlimited'
     container "bioraddbg/omnition-r:${workflow.manifest.version}"
-    publishDir "${params.reportsDir}/", mode: 'copy', overwrite: true
-    if (workflow.profile == 'aws') {
-        label 'medium'
-    } else {
-        label 'cpu_small'
-        label 'memory_xsmall'
+    publishDir "${params.options.reportsDir}/", mode: 'copy', overwrite: true
+    label 'cpu_medium'
+    label 'memory_medium'
+    if (!(workflow.profile =~ /(awsbatch|tower)/)) {
+        beforeScript 'ulimit -Ss unlimited'
     }
 
     input:
@@ -25,6 +23,6 @@ process AGGREGATE_METRICS {
 
     script:
     """
-    atacAggregateMetrics.R ./ "${assay}" "${params.atac.mitoContig}" "${params.options.barcodedTn5}"
+    atacAggregateMetrics.R ./ "${assay}" "${params.options.mitoContig}" "${params.catac != null}"
     """
 }

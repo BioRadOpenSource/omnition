@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-# Caleb Lareau
 # Bio-Rad Laboratories, Inc.
 
 import pysam
 from optparse import OptionParser
 
 opts = OptionParser()
-usage = "usage: %prog [options] [inputs] Software to process aligned bam files and annotate with a drop barcode"
+usage = "usage: %prog [options] [inputs] Software to process aligned bam files \
+and annotate with a drop barcode"
 opts = OptionParser(usage=usage)
 opts.add_option("--input", help="Filename of the existing .bam file")
 opts.add_option("--output", help="Filename of new .bam file to be generated")
@@ -33,8 +33,8 @@ hqfrags = options.hq_frags
 
 def getBarcode(intags):
     """
-	Parse out the bead barcode per-read
-	"""
+    Parse out the bead barcode per-read
+    """
     for tg in intags:
         if bb == tg[0]:
             return tg[1]

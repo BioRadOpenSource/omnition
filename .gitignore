@@ -1,0 +1,29 @@
+# scrna_shortread/.gitignore
+
+# Nextflow
+.nextflow*
+work/*
+results*/*
+reports/*
+
+# Images
+singularity/*
+
+# Test
+test/output/*
+test/references/*
+!test/references/rna/normal/Homo_sapiens.GRCh38.dna.chromosome.10.fa.gz
+!test/references/rna/normal/Homo_sapiens.GRCh38.97.gtf.gz
+!test/references/rna/mixed/Homo_sapiens.GRCh38.dna.chromosome.10.fa.gz
+!test/references/rna/mixed/Homo_sapiens.GRCh38.97.gtf.gz
+!test/references/rna/mixed/Mus_musculus.GRCm38.dna.chromosome.10.fa.gz
+!test/references/rna/mixed/Mus_musculus.GRCm38.99.gtf.gz
+!test/references/contaminants/**/*fa.gz
+
+# Rust
+bin/*/target
+
+# Misc
+.DS_Store
+*.pyc
+.Rproj.user

@@ -6,12 +6,9 @@ params.options = [:]
 
 process GUNZIP {
     tag "${file}"
-    if (workflow.profile == 'aws') {
-        label 'small'
-    } else {
-        label 'cpu_xsmall'
-        label 'memory_xxsmall'
-    }
+    container "bioraddbg/omnition-core:${workflow.manifest.version}"
+    label 'cpu_xsmall'
+    label 'memory_xxsmall'
 
     input:
     path file

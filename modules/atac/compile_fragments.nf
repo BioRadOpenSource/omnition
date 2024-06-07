@@ -4,14 +4,9 @@ Compile fragments by sample
 process COMPILE_FRAGMENTS {
     tag "${sampleId}"
     container "bioraddbg/omnition-core:${workflow.manifest.version}"
-    publishDir "${params.resultsDir}/${sampleId}/fragments", mode: "copy", overwrite: true
-
-    if (workflow.profile == 'aws') {
-        label 'large'
-    } else {
-        label 'cpu_large'
-        label 'memory_medium'
-    }
+    publishDir "${params.options.resultsDir}/${sampleId}/fragments", mode: "copy", overwrite: true
+    label 'cpu_large'
+    label 'memory_medium'
 
     input:
         tuple val(sampleId), path(fragments), path(index)

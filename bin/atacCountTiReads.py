@@ -8,7 +8,8 @@ import csv
 # This function defines the input arguments.
 def getargs():
     parser = argparse.ArgumentParser(
-        description="Script to count the reads for each TI and check against the config."
+        description="Script to count the reads for each TI and "
+        "check against the config."
     )
 
     options = parser.add_argument_group("Options")
@@ -26,7 +27,10 @@ def getargs():
         "-s", "--sample-id", required=True, help="The Sample ID for the fastq file."
     )
     options.add_argument(
-        "-m", "--messages", required=True, help="The messages file to add possible warnings to."
+        "-m",
+        "--messages",
+        required=True,
+        help="The messages file to add possible warnings to.",
     )
 
     return parser.parse_args()
@@ -34,7 +38,6 @@ def getargs():
 
 # Imports and parses the reference index list
 def importTIindex(index):
-
     TIlist = list()
     TInames = dict()
     TIlen = 0
@@ -52,7 +55,8 @@ def importTIindex(index):
                         TIlen = len(data[1])
                     else:
                         print(
-                            "[ERROR] Reference TI sequences are of unequal lengths.  Please check pipeline parameter file."
+                            "[ERROR] Reference TI sequences are of unequal lengths.  "
+                            "Please check pipeline parameter file."
                         )
                         exit(1)
             data = f.readline()
@@ -66,13 +70,14 @@ def inputFastqs(filename, TIlen, refTIlist):
     TIreadcounts = []
 
     for name, seq, qual in pyfastx.Fastq(filename, build_index=False):
-        myTI = name.split("_")[0][(TIlen * -1) :]
+        myTI = name.split("_")[0][(TIlen * -1):]
         # Check that TIs found are in the reference list
         if myTI not in refTIlist:
             print(
                 "[ERROR] TI "
                 + myTI
-                + " found in data not present in reference list. Please check run parameters."
+                + " found in data not present in reference list. Please "
+                "check run parameters."
             )
             exit(1)
         if myTI not in TIsfound:
@@ -85,7 +90,6 @@ def inputFastqs(filename, TIlen, refTIlist):
 
 # Imports and parses the TI config
 def importConfig(config, sample):
-
     TIs = set()
 
     with open(config, "r") as f:
@@ -104,7 +108,6 @@ def importConfig(config, sample):
 
 # Checks the TIs found in the fastq against the TIs listed in the config
 def checkTIs(realTIs, configTIs, refTIs):
-
     errorlist = []
     for i in range(len(realTIs)):
         if realTIs[i] not in configTIs:
@@ -113,7 +116,8 @@ def checkTIs(realTIs, configTIs, refTIs):
                 + refTIs[realTIs[i]]
                 + " - "
                 + realTIs[i]
-                + " found in fastq but not found in config file. Please check the config file.\n"
+                + " found in fastq but not found in config file. "
+                "Please check the config file.\n"
             )
     for TI in configTIs:
         if TI not in realTIs:
@@ -122,7 +126,8 @@ def checkTIs(realTIs, configTIs, refTIs):
                 + refTIs[TI]
                 + " - "
                 + TI
-                + " found in config file but not found in fastq. Please check the config file.\n"
+                + " found in config file but not found in fastq. "
+                "Please check the config file.\n"
             )
     return errorlist
 
@@ -149,12 +154,14 @@ def writeerrorfile(sample, errorlist, refTInames, realTIs, TIcounts):
     F.write("\n")
     F.close()
 
+
 # Add warnings to messages file if warnings exist
 def writewarnings(sample, refTInames, realTIs, TIcounts):
-    with open(args.messages, 'a') as f:
+    with open(args.messages, "a") as f:
         for i in range(len(realTIs)):
             if TIcounts[i] < 10000:
-                f.write("WARN: [ATAC] "
+                f.write(
+                    "WARN: [ATAC] "
                     + "Sample,TI "
                     + sample
                     + ","
@@ -166,6 +173,7 @@ def writewarnings(sample, refTInames, realTIs, TIcounts):
                     + " (Threshold = 10000)"
                     + "\n"
                 )
+
 
 args = getargs()
 

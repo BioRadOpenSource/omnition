@@ -5,6 +5,9 @@
 # Starting with image already containing mamba
 FROM mambaorg/micromamba:1.0-bullseye-slim
 
+# Get container directory as an ARG
+ARG CONT_DIR
+
 # Building image using bash shell
 SHELL ["/bin/bash", "-c"]
 
@@ -18,11 +21,11 @@ RUN apt-get --allow-releaseinfo-change update \
     && apt-get clean -y
 
 # Building the mamba environment
-COPY $MAMBA_ENV.yaml /opt/biorad/env/
+COPY $CONT_DIR/$MAMBA_ENV.yaml /opt/biorad/env/
 RUN micromamba create -f /opt/biorad/env/$MAMBA_ENV.yaml \
     && micromamba clean -afy
 
-# Removing default acitvation commands and setting correct ones
+# Removing default activation commands and setting correct ones
 RUN rm /root/.bashrc
 RUN echo "source /etc/container.bashrc" >> /etc/bash.bashrc \
     && echo "set +u" > /etc/container.bashrc \

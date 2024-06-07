@@ -5,28 +5,27 @@ Split fastqs by TI
 params.options = [:]
 
 process SPLIT_FASTQ {
-    tag "${sample_id}-${index}"
+    tag "${sampleId}"
     container "bioraddbg/omnition-core:${workflow.manifest.version}"
-    if (workflow.profile == 'aws') {
-        label 'small'
-  } else {
-        label 'cpu_medium'
-        label 'memory_small'
-    }
-    errorStrategy 'terminate'
+    label 'cpu_small'
+    label 'memory_small'
 
-  input:
-    tuple val(sample_id), val(index), path(fastq)
+    input:
+    tuple val(sampleId), path(fastq), path(counts)
     val ti_checks_passed
     val images_pulled
 
-  output:
-    tuple val("${sample_id}-${index}"), path("${sample_id}-*.complete_debarcoded.split.fastq.gz"), emit: split
+    output:
+    tuple val("${sampleId}"), path("${sampleId}-*.complete_debarcoded.split.fastq"), emit: split
 
-  script:
+    script:
+    override_flag = params.options.tiErrorOverride == true ? "--override_errors" : ""
     """
-  atacSplitFastq.py -r1 ${fastq[0]} -r2 ${fastq[1]} -i $index
-  pigz -p ${task.cpus} ${sample_id}-${index}_R1.complete_debarcoded.split.fastq
-  pigz -p ${task.cpus} ${sample_id}-${index}_R2.complete_debarcoded.split.fastq
-  """
+    atacSplitFastq.py -r1 ${fastq[0]} \
+        -r2 ${fastq[1]} \
+        -s ${sampleId}  \
+        -c ${counts} \
+        -p ${task.cpus} \
+        ${override_flag}
+    """
 }

@@ -7,12 +7,8 @@ params.options = [:]
 process TSS_ENRICHMENT {
     tag "${sampleId}"
     container "bioraddbg/omnition-dbg:${workflow.manifest.version}"
-    if (workflow.profile == 'aws') {
-        label 'medium'
-    } else {
-        label 'cpu_xsmall'
-        label 'memory_xxsmall'
-    }
+    label 'cpu_xsmall'
+    label 'memory_xxsmall'
 
     input:
     tuple val(sampleId), path(tss_matrix)

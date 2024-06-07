@@ -20,7 +20,6 @@ options.add_argument(
 
 # Make a list of all dedup stats filenames
 def grabDedupFiles(inputdir):
-
     dedupfiles = []
     dirfiles = os.listdir(inputdir)
     for i in range(len(dirfiles)):
@@ -32,13 +31,13 @@ def grabDedupFiles(inputdir):
 
 # Parse the mark duplicate output files and create a compiled file
 def parseAndSum(sampleid, dedupfiles):
-
     # Open the output files
     dedupdata = []
     for i in range(len(dedupfiles)):
         with open(dedupfiles[i], "r") as f:
             data = f.readline()
-            # Grab the ## METRICS section which is used in the reports and aggregate metrics
+            # Grab the ## METRICS section which is used in
+            # the reports and aggregate metrics
             while data.find("## METRICS") == -1:
                 data = f.readline()
             header1 = data
@@ -55,7 +54,8 @@ def parseAndSum(sampleid, dedupfiles):
                 totalsum += int(dedupdata[j][i])
             outdata.append(totalsum)
         else:
-            # Percent duplicates = (2*READ_PAIR_DUPLICATES+UNPAIRED_READ_DUPLICATES)/(2*READ_PAIRS_EXAMINED+UNPAIRED_READS_EXAMINED)
+            # Percent duplicates = (2*READ_PAIR_DUPLICATES+UNPAIRED_READ_DUPLICATES)/
+            # (2*READ_PAIRS_EXAMINED+UNPAIRED_READS_EXAMINED)
             percdup = ((outdata[6] * 2) + outdata[5]) / ((outdata[2] * 2) + outdata[1])
             outdata.append(percdup)
 
@@ -70,7 +70,6 @@ def parseAndSum(sampleid, dedupfiles):
 
 # Executing script
 if __name__ == "__main__":
-
     # Establish inputs
     args = parser.parse_args()
     dedupfiles = grabDedupFiles(args.input_directory)

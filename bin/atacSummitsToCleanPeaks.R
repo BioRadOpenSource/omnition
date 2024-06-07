@@ -53,6 +53,9 @@ suppressPackageStartupMessages(library(GenomicRanges))
 suppressPackageStartupMessages(library(data.table))
 suppressPackageStartupMessages(library(tools))
 
+# Set data.table threading
+setDTthreads()
+
 makePeaksDF <-
   function(summit_file,
            peak_width,

@@ -1,5 +1,4 @@
 #!/usr/bin/env Rscript
-# Caleb Lareau
 # Bio-Rad Laboratories, Inc.
 
 options(warn = -1)
@@ -25,11 +24,14 @@ args <- commandArgs(trailingOnly = FALSE)
 nn <- length(args)
 
 # Import parameters using logic from the end
-frag_bedpe_file <- args[nn - 3]
-barcode_translate_file <- args[nn - 2]
-frag_anno_file_out <- args[nn - 1]
-sumstats_file_out <- args[nn]
+frag_bedpe_file <- args[nn - 4]
+barcode_translate_file <- args[nn - 3]
+frag_anno_file_out <- args[nn - 2]
+sumstats_file_out <- args[nn - 1]
+threads_to_use <- args[nn]
 
+# Set data.table threading
+setDTthreads(threads = threads_to_use)
 
 # Import frags and annotate with cell barcode ID
 frags <-

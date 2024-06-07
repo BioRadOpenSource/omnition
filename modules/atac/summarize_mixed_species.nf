@@ -7,12 +7,10 @@ params.options = [:]
 process SUMMARIZE_MIXED_SPECIES {
     tag "${sampleId}"
     container "bioraddbg/omnition-r:${workflow.manifest.version}"
-    if (workflow.profile == 'aws') {
-        label 'small'
-    } else {
-        label 'cpu_xsmall'
-        label 'memory_xxsmall'
-    }
+    publishDir "${params.options.resultsDir}/${sampleId}/alignments", pattern: '*tsv', mode: 'copy',
+        overwrite: true
+    label 'cpu_xsmall'
+    label 'memory_xxsmall'
 
     input:
     tuple val(sampleId), path(data)
@@ -24,7 +22,7 @@ process SUMMARIZE_MIXED_SPECIES {
 
     script:
     """
-    coreSpeciesMixStats.R -p ${sampleId} -y "atac" -ct ${params.options.crosstalkthreshold} \
+    coreSpeciesMixStats.R -p ${sampleId} -y "atac" -ct ${params.options.crosstalkThreshold} \
         ${data} \$species1 \$species2
     """
 }

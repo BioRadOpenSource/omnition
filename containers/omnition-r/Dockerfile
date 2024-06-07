@@ -2,31 +2,35 @@
 
 # Copyright 2020 Bio-Rad Laboratories, Inc.
 
-# Starting with image already containing conda
-FROM continuumio/miniconda3:4.7.12
+# Starting with image already containing mamba
+FROM mambaorg/micromamba:1.0-bullseye-slim
+
+# Get container directory as an ARG
+ARG CONT_DIR
 
 # Building image using bash shell
 SHELL ["/bin/bash", "-c"]
 
-# Name of conda environment being created (must match env.yaml filename)
-ARG CONDA_ENV="omnition-r"
+# Name of mamba environment being created (must match env.yaml filename)
+ARG MAMBA_ENV="omnition-r"
 
 # Installing image dependencies
-RUN apt-get --allow-releaseinfo-change update && \
-	apt-get install -y procps=2:3.3.15-2 && \
-	apt-get clean -y
+USER root
+RUN apt-get --allow-releaseinfo-change update \
+    && apt-get install -y procps=2:3.3.17-5 gawk=1:5.1.0-1 \
+    && apt-get clean -y
 
-# Building the conda environment
-COPY $CONDA_ENV.yaml /opt/biorad/env/
-RUN conda env create -f /opt/biorad/env/$CONDA_ENV.yaml && \
-	conda clean -afy
+# Building the mamba environment
+COPY $CONT_DIR/$MAMBA_ENV.yaml /opt/biorad/env/
+RUN micromamba create -f /opt/biorad/env/$MAMBA_ENV.yaml \
+    && micromamba clean -afy
 
-# Removing default acitvation commands and setting correct ones
-RUN rm root/.bashrc
-RUN echo "source /etc/container.bashrc" >> /etc/bash.bashrc && \
-	echo "set +u" > /etc/container.bashrc && \
-	echo ". /opt/conda/etc/profile.d/conda.sh" >> /etc/container.bashrc && \
-	echo "conda activate $CONDA_ENV" >> /etc/container.bashrc
+# Removing default activation commands and setting correct ones
+RUN rm /root/.bashrc
+RUN echo "source /etc/container.bashrc" >> /etc/bash.bashrc \
+    && echo "set +u" > /etc/container.bashrc \
+    && echo 'eval "$(micromamba shell hook --shell=bash)"' >> /etc/container.bashrc \
+    && echo "micromamba activate $MAMBA_ENV" >> /etc/container.bashrc
 
 # Activating environment when using non-login, non-interactive shell
 ENV BASH_ENV /etc/container.bashrc
@@ -38,4 +42,5 @@ ENV PATH /opt/biorad/bin/:$PATH
 # Setting default working directory
 # WARNING: This is not preserved by Singularity
 WORKDIR /opt/biorad/
-
+RUN R -e "devtools::install_github('immunogenomics/presto@31dc97fed5e2e7fc323ae4af62f72181cc51d9a3', upgrade='never', repos=NULL)"
+RUN R -e "devtools::install_github('satijalab/seurat-wrappers@d28512f804d5fe05e6d68900ca9221020d52cf1d', upgrade='never', repos=NULL)"

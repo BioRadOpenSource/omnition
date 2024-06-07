@@ -5,13 +5,10 @@ Verify reference formatting
 params.options = [:]
 
 process VERIFY_REFERENCES {
-    if (workflow.profile == 'aws') {
-        label 'small'
-    } else {
-        label 'cpu_xsmall'
-        label 'memory_xxsmall'
-    }
+    container "bioraddbg/omnition-core:${workflow.manifest.version}"
     errorStrategy 'terminate'
+    label 'cpu_xsmall'
+    label 'memory_xsmall'
 
     input:
     path fasta
@@ -47,7 +44,7 @@ process VERIFY_REFERENCES {
         fi
 
         # Check that the third field has exon records in it
-        FINDTEST="\$(awk '/^[^#]/ { print \$3 }' \$FILE | grep -m 1 "exon" || true )"
+        FINDTEST="\$(awk '/^[^#]/ { print tolower(\$3) }' \$FILE | grep -m 1 "exon" || true )"
         if [[ -z \$FINDTEST ]]; then
             echo -e "\$FILE is missing exon records in the third field" >> reference_errors.txt
         fi

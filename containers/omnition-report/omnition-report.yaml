@@ -92,7 +92,7 @@ dependencies:
 - mysql-common=8.0.32=h14678bc_0
 - mysql-libs=8.0.32=h54cf53e_0
 - ncurses=6.3=h27087fc_1
-- nodejs=12.19.0=h8b53aa1_3
+- nodejs=16.5.0=h92b4a50_0
 - nspr=4.35=h27087fc_0
 - nss=3.88=he45b914_0
 - numpy=1.23.4=py310h53a5b5f_1
@@ -114,6 +114,7 @@ dependencies:
 - python-dateutil=2.8.2=pyhd8ed1ab_0
 - python_abi=3.10=3_cp310
 - pytz=2022.7.1=pyhd8ed1ab_0
+- pyyaml=6.0=py310h5764c6d_5
 - qt-main=5.15.2=hf8cb05d_0
 - readline=8.1.2=h0f457ee_0
 - setuptools=67.3.1=pyhd8ed1ab_0

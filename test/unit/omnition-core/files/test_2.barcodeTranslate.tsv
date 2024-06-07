@@ -1,0 +1,12 @@
+BeadBarcode,DropBarcode,nBeads
+1,testBC1N2,2
+2,testBC1N2,2
+4,testBC2N2,2
+3,testBC2N2,2
+5,testBC3N1,1
+6,testBC4N1,1
+10,testBC5N4,4
+8,testBC5N4,4
+9,testBC5N4,4
+7,testBC5N4,4
+11,testBC6N1,1
