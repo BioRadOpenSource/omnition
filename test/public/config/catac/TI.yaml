@@ -1,0 +1,5 @@
+- sample: "DemoAtacCombinatorial_S1"
+  TI1:
+    sequence: "AGCACG"
+  TI2: 
+    sequence: "CGCATA"

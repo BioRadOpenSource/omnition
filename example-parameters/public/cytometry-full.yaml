@@ -1,0 +1,6 @@
+cytometry:
+  workflow: "full"
+  input: "/home/ubuntu/cytometry-reads"
+  abFile: "/home/ubuntu/cytometry-ref/cytometry-adt-file.csv"
+  reference: 
+    directory: "/home/ubuntu/cytometry-ref/"

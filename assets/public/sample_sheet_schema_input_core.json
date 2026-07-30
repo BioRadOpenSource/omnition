@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/BioRadOpenSource/omnition/main/assets/public/sample_sheet_schema_input_core.json",
+  "title": "nf-schema example - params samplesheet schema",
+  "description": "Schema for the file provided with params sampleSheet",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "barcode": {
+        "type": "object",
+        "properties": {
+          "force": {
+            "errorMessage": "Barcode force parameter must be provided as an integer",
+            "type": "integer"
+          }
+        },
+        "meta": ["barcode"]
+      }
+    }
+  }
+}

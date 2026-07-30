@@ -10,15 +10,25 @@ reports/*
 singularity/*
 
 # Test
-test/output/*
-test/references/*
-!test/references/rna/normal/Homo_sapiens.GRCh38.dna.chromosome.10.fa.gz
-!test/references/rna/normal/Homo_sapiens.GRCh38.97.gtf.gz
-!test/references/rna/mixed/Homo_sapiens.GRCh38.dna.chromosome.10.fa.gz
-!test/references/rna/mixed/Homo_sapiens.GRCh38.97.gtf.gz
-!test/references/rna/mixed/Mus_musculus.GRCm38.dna.chromosome.10.fa.gz
-!test/references/rna/mixed/Mus_musculus.GRCm38.99.gtf.gz
-!test/references/contaminants/**/*fa.gz
+test/public/output/*
+test/public/data/*/*/mergedFastqs/*
+test/public/references/**
+!test/public/references/atac/
+!test/public/references/rna/
+!test/public/references/rna/normal/
+!test/public/references/rna/mixed/
+!test/public/references/cytometry/
+!test/public/references/atac/DemoRefAtachg38.fa.gz
+!test/public/references/atac/DemoRefAtachg38.gtf.gz
+!test/public/references/atac/DemoRefAtacmm10.fa.gz
+!test/public/references/atac/DemoRefAtacmm10.gtf.gz
+!test/public/references/rna/normal/DemoReferenceRnaNormalHomoSapiens.fa.gz
+!test/public/references/rna/normal/DemoReferenceRnaNormalHomoSapiens.gtf.gz
+!test/public/references/rna/mixed/DemoReferenceRnaMixedHomoSapiens_S1.fa.gz
+!test/public/references/rna/mixed/DemoReferenceRnaMixedHomoSapiens_S1.gtf.gz
+!test/public/references/rna/mixed/DemoReferenceRnaMixedMusMusculus_S2.fa.gz
+!test/public/references/rna/mixed/DemoReferenceRnaMixedMusMusculus_S2.gtf.gz
+!test/public/references/cytometry/cytometry_demo_adts.csv
 
 # Rust
 bin/*/target
@@ -27,3 +37,4 @@ bin/*/target
 .DS_Store
 *.pyc
 .Rproj.user
+my-changes.patch

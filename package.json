@@ -25,7 +25,7 @@
     ],
     "scripts": {
         "build": "tsc",
-        "test": "sh test/all.sh",
+        "test": "sh test/omnition/all.sh",
         "lint": "eslint src --ext .ts",
         "serve": "docsify serve docs",
         "prepare": "husky install",

@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/BioRadOpenSource/omnition/main/assets/public/sample_sheet_schema_input_rna.json",
+  "title": "nf-schema example - params samplesheet schema",
+  "description": "Schema for the file provided with params sampleSheet",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "sample": {
+        "type": "string",
+        "pattern": "^\\S+$",
+        "errorMessage": "Sample name must be provided and cannot contain spaces",
+        "meta": ["sampleId"]
+      },
+      "fastq_1": {
+        "type": "string",
+        "pattern": "^\\S+\\.((fq)|(fq\\.gz)|(fastq)|(fastq\\.gz))$",
+        "errorMessage": "FastQ file for reads 1 must be provided, cannot contain spaces and must have extension '.fq.gz' or '.fastq.gz'",
+        "meta": ["fastq1"]
+      },
+      "fastq_2": {
+          "errorMessage": "FastQ file for reads 2 cannot contain spaces and must have extension '.fq.gz' or '.fastq.gz'",
+          "type": "string",
+          "pattern": "^\\S+\\.((fq)|(fq\\.gz)|(fastq)|(fastq\\.gz))$",
+          "meta": ["fastq2"]
+      },
+      "barcode": {
+        "type": "object",
+        "properties": {
+          "force": {
+            "errorMessage": "Barcode force parameter must be provided as an integer",
+            "type": "integer"
+          }
+        },
+        "meta": ["barcode"]
+      },
+      "beadMergeUmiThreshold": {
+        "errorMessage": "beadMergeUmiThreshold parameter must be provided as an integer",
+        "type": "integer",
+        "meta": ["beadMergeUmiThreshold"]
+      },
+      "umiHamming": {
+        "errorMessage": "umiHamming parameter must be provided as an integer",
+        "type": "integer",
+        "meta": ["umiHamming"]
+      }
+    },
+    "required": ["sample", "fastq_1", "fastq_2"]
+  }
+}

@@ -1,0 +1,35 @@
+/*
+Reannotate fragments files based on merging scheme
+*/
+
+process REANNOTATE_FRAGMENTS {
+    tag "${sampleId}, ${chr}"
+    container "${params.container_image.r_public}:${workflow.manifest.version}"
+    label 'cpu_large'
+    label 'memory_medium'
+
+    input:
+    tuple val(sampleId), val(chr), path(bedpe), path(dict)
+    val images_pulled
+
+    output:
+    tuple val(sampleId), val(chr), path("${sampleId}.*.frag.bedpe.annotated.dedup.tsv"), emit: chr_reannotate_fragments
+    tuple val(sampleId), path("${sampleId}.*.frag.bedpe.annotated.dedup.tsv"), emit: reannotate_fragments
+    tuple val(sampleId), path("${sampleId}.*_frag.sumstats.tsv"), emit: frag_sumstats
+    tuple val(sampleId), path('*_read_counts.csv'), emit: count
+
+    script:
+    """
+    publicAtacReannotateFragments.R \
+        ${bedpe} \
+        ${dict} \
+        ${sampleId}.${chr}.frag.bedpe.annotated.dedup.tsv \
+        ${sampleId}.${chr}_frag.sumstats.tsv \
+        ${task.cpus}
+
+    READCOUNTFILE="${sampleId}_${chr}_reannotate_fragments_output_read_counts.csv"
+    printf "sample,process,metric,value\n" > \$READCOUNTFILE
+    printf "${sampleId},reannotate_fragments_${chr},input,\$(cat input_frags.tsv)\n" >> \$READCOUNTFILE
+    printf "${sampleId},reannotate_fragments_${chr},output,\$(cat output_frags.tsv)\n" >> \$READCOUNTFILE
+    """
+}

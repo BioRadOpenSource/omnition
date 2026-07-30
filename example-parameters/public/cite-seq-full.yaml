@@ -1,0 +1,14 @@
+rna:
+  mixed: false
+  workflow: "full"
+  input: "/home/ubuntu/cite-seq-reads"
+  reference:  
+    directory: "/home/ubuntu/cite-seq-ref/"
+    fasta: "/home/ubuntu/cite-seq-ref/human.fa"
+    gtf: "/home/ubuntu/cite-seq-ref/human.gtf"
+cytometry:
+  workflow: "full"
+  input: "/home/ubuntu/cite-seq-reads"
+  abFile: "/home/ubuntu/cite-seq-ref/cite-seq-adt-file.csv"
+  reference: 
+    directory: "/home/ubuntu/cite-seq-ref/"

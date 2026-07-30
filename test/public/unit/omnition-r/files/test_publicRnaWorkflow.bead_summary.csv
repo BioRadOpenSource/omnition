@@ -1,0 +1,14 @@
+cell_barcode,bead_barcode,total_aligned_reads,unaligned_reads,deduplicated_reads.bead,genes.bead,umi.bead,transcripts.bead,genic_reads.bead,coding_reads.bead,utr_reads.bead,intronic_reads.bead,intergenic_reads.bead,rRNA_reads.bead,mitochondrial_reads.bead,unassigned_ambiguous_reads.bead,unassigned_low_mapping_qual_reads.bead,unassigned_other_reads.bead,GRCm38_umi.bead,Homo_sapiens_umi.bead,deduplicated_reads.cell,genes.cell,umi.cell,transcripts.cell,genic_reads.cell,coding_reads.cell,utr_reads.cell,intronic_reads.cell,intergenic_reads.cell,rRNA_reads.cell,mitochondrial_reads.cell,unassigned_ambiguous_reads.cell,unassigned_low_mapping_qual_reads.cell,unassigned_other_reads.cell,GRCm38_umi.cell,Homo_sapiens_umi.cell,n_beads,n_deconvolution_oligs,cell_above_knee
+droplet_2,CGCTCATACATACACGCGCAA,0,0,0,0,0,10000,0,0,0,0,0,0,0,0,0,0,9000,1000,0,0,0,0,10000,0,0,0,0,0,0,0,0,0,0,0,4,1000,TRUE
+droplet_2,AGGACGATAAAGCGGGGAGGA,0,0,0,0,0,10000,0,0,0,0,0,0,0,0,0,0,9000,1000,0,0,0,0,10000,0,0,0,0,0,0,0,0,0,0,0,4,1000,TRUE
+droplet_2,GGGCTCATAAAGCGGAGAGGA,0,0,0,0,0,100,0,0,0,0,0,0,0,0,0,0,5,95,0,0,0,0,10000,0,0,0,0,0,0,0,0,0,0,0,4,1000,FALSE
+droplet_2,AGGACCGTAAAGCGGATAGGA,0,0,0,0,0,100,0,0,0,0,0,0,0,0,0,0,5,95,0,0,0,0,10000,0,0,0,0,0,0,0,0,0,0,0,4,1000,FALSE
+droplet_3,CGCTCCGACATACGCGCGCAC,0,0,0,0,0,10000,0,0,0,0,0,0,0,0,0,0,9500,500,0,0,0,0,10000,0,0,0,0,0,0,0,0,0,0,0,4,500,TRUE
+droplet_3,CGCTCCGACATACGCGCGCAC,0,0,0,0,0,10000,0,0,0,0,0,0,0,0,0,0,9500,500,0,0,0,0,10000,0,0,0,0,0,0,0,0,0,0,0,4,500,TRUE
+droplet_3,CGCTCCGACATACGCGCGCAC,0,0,0,0,0,10000,0,0,0,0,0,0,0,0,0,0,9500,500,0,0,0,0,10000,0,0,0,0,0,0,0,0,0,0,0,4,500,TRUE
+droplet_3,CGCTCCGACATACGCGCGCAC,0,0,0,0,0,10000,0,0,0,0,0,0,0,0,0,0,500,9500,0,0,0,0,10000,0,0,0,0,0,0,0,0,0,0,0,4,500,TRUE
+droplet_3,CGCTCCGACATACGCGCGCAC,0,0,0,0,0,10000,0,0,0,0,0,0,0,0,0,0,500,9500,0,0,0,0,10000,0,0,0,0,0,0,0,0,0,0,0,4,500,TRUE
+NA,CCTCCTTAATGGCCATGGTGT,0,0,0,0,0,10000,0,0,0,0,0,0,0,0,0,0,1000,9000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE
+NA,CGGCCAGCACGCCAATGGTGT,0,0,0,0,0,10000,0,0,0,0,0,0,0,0,0,0,5000,5000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE
+NA,AATTCCATCAGCAACGCAATC,0,0,0,0,0,10000,0,0,0,0,0,0,0,0,0,0,9000,1000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE
+NA,CATCCCATCACCAACGGAATC,0,0,0,0,0,1000,0,0,0,0,0,0,0,0,0,0,500,500,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,FALSE

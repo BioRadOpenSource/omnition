@@ -1,0 +1,20 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://raw.githubusercontent.com/BioRadOpenSource/omnition/main/assets/public/adtFile_schema_input.json",
+    "title": "BioRadOpenSource/omnition adtFile schema",
+    "description": "Schema for the file provided with params.cytometry",
+    "type": "array",
+    "items": {
+        "type": "object",
+        "properties": {
+            "sequence": {
+                "type": "string",
+                "pattern": "^[ATCG]+$",
+                "errorMessage": "The file contains an oligo sequence with an invalid character, only ATCG are allowed."
+            },
+            "AB": {
+                "type": "string"
+            }
+        }
+    }
+}

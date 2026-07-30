@@ -1,0 +1,8 @@
+rna:
+  input: ""/home/ubuntu/rna-reads""
+  workflow: "full"
+  mixed: true
+  reference:
+    directory: "/home/ubuntu/mixed-genome/"
+    fasta: "/home/ubuntu/mixed-genome/human.fa.gz /home/ubuntu/mixed-genome/mouse.fa.gz"
+    gtf: "/home/ubuntu/mixed-genome/human.gtf.gz /home/ubuntu/mixed-genome/mouse.gtf.gz"

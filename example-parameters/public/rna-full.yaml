@@ -1,0 +1,7 @@
+rna:
+  input: ""/home/ubuntu/rna-reads""
+  workflow: "full"
+  reference:  
+    directory: "/home/ubuntu/rna-ref/"
+    fasta: "/home/ubuntu/rna-ref/human.fa"
+    gtf: "/home/ubuntu/rna-ref/human.gtf"

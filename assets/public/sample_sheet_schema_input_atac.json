@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/BioRadOpenSource/omnition/main/assets/public/sample_sheet_schema_input_atac.json",
+  "title": "nf-schema example - params samplesheet schema",
+  "description": "Schema for the file provided with params sampleSheet",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "sample": {
+        "type": "string",
+        "pattern": "^\\S+$",
+        "errorMessage": "Sample name must be provided and cannot contain spaces",
+        "meta": ["sampleId"]
+      },
+      "fastq_1": {
+        "type": "string",
+        "pattern": "^\\S+\\.f(ast)?q\\.gz$",
+        "errorMessage": "FastQ file for reads 1 must be provided, cannot contain spaces and must have extension '.fq.gz' or '.fastq.gz'",
+        "meta": ["fastq1"]
+      },
+      "fastq_2": {
+          "errorMessage": "FastQ file for reads 2 cannot contain spaces and must have extension '.fq.gz' or '.fastq.gz'",
+          "type": "string",
+          "pattern": "^\\S+\\.f(ast)?q\\.gz$",
+          "meta": ["fastq2"]
+      },
+      "barcode": {
+        "type": "object",
+        "properties": {
+          "force": {
+            "type": "integer",
+            "errorMessage": "Barcode force parameter must be provided as an integer"
+          }
+        },
+        "meta": ["barcode"]
+      },
+      "trimFivePrime": {
+        "type": "integer",
+        "meta": ["trimFivePrime"],
+        "errorMessage": "Trim 5' parameter must be provided as an integer"
+      },
+      "trimThreePrime": {
+        "type": "integer",
+        "meta": ["trimThreePrime"],
+        "errorMessage": "Trim 3' parameter must be provided as an integer"
+      },
+      "mergeMethod": {
+        "type": "string",
+        "meta": ["mergeMethod"],
+        "enum": ["r1", "r2", "both"],
+        "errorMessage": "The 'mergeMethod' parameter must be one of 'both', 'r1', or 'r2'."
+      },
+      "jaccard": {
+        "type": "object",
+        "properties": {
+          "force": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1,
+            "errorMessage": "Jaccard force parameter must be provided as a provided as a decimal value between 1 and 0."
+          }
+        },
+        "meta": ["jaccard"]
+      }
+    }
+  }
+}
+  

@@ -1,0 +1,3187 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/BioRadOpenSource/omnition/main/assets/public/sample_sheet_schema_input_ti.json",
+  "title": "BioRadOpenSource/omnition TI schema",
+  "description": "Schema for the file provided with params.ASSAY.ti",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+        "sample": {
+          "type": "string",
+          "pattern": "^\\S+$",
+          "errorMessage": "FASTQ name must be provided and cannot contain spaces",
+          "meta": ["sampleId"]
+        },
+        "TI1": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI1"]
+        },
+        "TI2": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI2"]
+        },
+        "TI3": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI3"]
+        },
+        "TI4": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI4"]
+        },
+        "TI5": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI5"]
+        },
+        "TI6": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI6"]
+        },
+        "TI7": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI7"]
+        },
+        "TI8": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI8"]
+        },
+        "TI9": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI9"]
+        },
+        "TI10": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI10"]
+        },
+        "TI11": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI11"]
+        },
+        "TI12": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI12"]
+        },
+        "TI13": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI13"]
+        },
+        "TI14": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI14"]
+        },
+        "TI15": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI15"]
+        },
+        "TI16": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI16"]
+        },
+        "TI17": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI17"]
+        },
+        "TI18": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI18"]
+        },
+        "TI19": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI19"]
+        },
+        "TI20": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI20"]
+        },
+        "TI21": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI21"]
+        },
+        "TI22": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI22"]
+        },
+        "TI23": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI23"]
+        },
+        "TI24": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI24"]
+        },
+        "TI25": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI25"]
+        },
+        "TI26": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI26"]
+        },
+        "TI27": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI27"]
+        },
+        "TI28": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI28"]
+        },
+        "TI29": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI29"]
+        },
+        "TI30": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI30"]
+        },
+        "TI31": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI31"]
+        },
+        "TI32": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI32"]
+        },
+        "TI33": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI33"]
+        },
+        "TI34": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI34"]
+        },
+        "TI35": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI35"]
+        },
+        "TI36": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI36"]
+        },
+        "TI37": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI37"]
+        },
+        "TI38": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI38"]
+        },
+        "TI39": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI39"]
+        },
+        "TI40": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI40"]
+        },
+        "TI41": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI41"]
+        },
+        "TI42": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI42"]
+        },
+        "TI43": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI43"]
+        },
+        "TI44": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI44"]
+        },
+        "TI45": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI45"]
+        },
+        "TI46": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI46"]
+        },
+        "TI47": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI47"]
+        },
+        "TI48": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI48"]
+        },
+        "TI49": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI49"]
+        },
+        "TI50": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI50"]
+        },
+        "TI51": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI51"]
+        },
+        "TI52": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI52"]
+        },
+        "TI53": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI53"]
+        },
+        "TI54": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI54"]
+        },
+        "TI55": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI55"]
+        },
+        "TI56": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI56"]
+        },
+        "TI57": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI57"]
+        },
+        "TI58": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI58"]
+        },
+        "TI59": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI59"]
+        },
+        "TI60": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI60"]
+        },
+        "TI61": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI61"]
+        },
+        "TI62": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI62"]
+        },
+        "TI63": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI63"]
+        },
+        "TI64": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI64"]
+        },
+        "TI65": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI65"]
+        },
+        "TI66": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI66"]
+        },
+        "TI67": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI67"]
+        },
+        "TI68": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI68"]
+        },
+        "TI69": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI69"]
+        },
+        "TI70": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI70"]
+        },
+        "TI71": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI71"]
+        },
+        "TI72": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI72"]
+        },
+        "TI73": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI73"]
+        },
+        "TI74": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI74"]
+        },
+        "TI75": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI75"]
+        },
+        "TI76": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI76"]
+        },
+        "TI77": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI77"]
+        },
+        "TI78": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI78"]
+        },
+        "TI79": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI79"]
+        },
+        "TI80": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI80"]
+        },
+        "TI81": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI81"]
+        },
+        "TI82": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI82"]
+        },
+        "TI83": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI83"]
+        },
+        "TI84": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI84"]
+        },
+        "TI85": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI85"]
+        },
+        "TI86": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI86"]
+        },
+        "TI87": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI87"]
+        },
+        "TI88": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI88"]
+        },
+        "TI89": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI89"]
+        },
+        "TI90": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI90"]
+        },
+        "TI91": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI91"]
+        },
+        "TI92": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI92"]
+        },
+        "TI93": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI93"]
+        },
+        "TI94": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI94"]
+        },
+        "TI95": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI95"]
+        },
+        "TI96": {
+          "type": "object",
+          "properties": {
+            "sequence": {
+              "type": "string",
+              "pattern": "^[ATCG]+$",
+              "errorMessage": "The file contains a TI sequence with an invalid character, only ATCG are allowed."
+            },
+            "barcode": {
+              "type": "object",
+              "properties": {
+                "force": {
+                  "type": "integer",
+                  "errorMessage": "Barcode force parameter must be provided as an integer",
+                  "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+                  "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+                }
+              },
+              "meta": ["barcode"]
+            },
+            "trimFivePrime": {
+              "type": "integer",
+              "meta": ["trimFivePrime"],
+              "errorMessage": "Trim 5' parameter must be provided as an integer"
+            },
+            "trimThreePrime": {
+              "type": "integer",
+              "meta": ["trimThreePrime"],
+              "errorMessage": "Trim 3' parameter must be provided as an integer"
+            }
+          },
+          "meta": ["TI96"]
+        }
+    },
+    "required": ["sample"]
+  }
+}

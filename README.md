@@ -1,5 +1,74 @@
 # Bio-Rad Laboratories, Inc. Omnition Single-Cell Analysis Software
 
+## ⚠️ Beta Release Notice
+
+This version of **Omnition** is a **beta release**. 
+If you want general information on Omnition and the latest stable release v1.1 which supports 3' RNA-Seq and ATAC-Seq please see below:
+[Introduction to Omnition](https://github.com/BioRadOpenSource/omnition?tab=readme-ov-file#introduction-to-omnition)
+
+Please note:
+
+- **Stability**: This release may contain bugs and is **not fully feature-complete**, especially for the newly added **Cytometry** and [**CITE-Seq**](https://citeseq.wordpress.com/) (Cytometry + RNA) assay support.
+- **Recommended for Testing Only**: If you need a stable production pipeline, switch to the **`main` branch** of this repository and use that version instead.
+- **Feedback Welcome**: This is an **open beta**. Please report any issues, share feedback, and suggest features—we’ll prioritize improvements based on your input.
+
+---
+
+## ✅ Changes Affecting All Modalities
+
+- **Mixed Species YAML Format**  
+    When supplying YAMLs for mixed-species experiments, the two sets of references (FASTA and GTF files) are now specified **on a single line, separated by a space**.  
+    _See the `example-parameters` directory for updated formatting examples._
+    
+- **Updated Output Directory Structure**  
+    With multi-omics support, the `sample_files` directory now includes an additional folder layer under each sample ID, organized by **modality** (e.g., `RNA`, `Cytometry`, `ATAC`).
+    
+---
+
+## 🆕 New Modalities: Cytometry & CITE-seq
+
+- **Run Modes Added**:
+    
+    - **Cytometry**
+    - **CITE-Seq** (Cytometry + RNA)
+- **Supported Inputs**:  
+    Any ADT or HTO with polyA capture can be analyzed alone or combined with the **Bio-Rad RNA kit** (protocols coming soon).
+    
+- **Configuration**:
+    
+    - Specify `cytometry` in the YAML file.
+    - See `cytometry-full.yaml` and `cite-seq-full.yaml` in `example-parameters`.
+    - Provide a reference file (e.g., `cytometry-adt-file.csv` in `example-parameters`).
+
+---
+
+## 🔍 Current Beta Limitations
+
+- **Reporting**:  
+    No HTML report for Cytometry or CITE-seq yet. Instead, key quality metrics are output to `report/metric_summary`.
+    3' RNA-Seq reports are still generated when analysing CITE-Seq (no cytometry data included)
+		
+- **Outputs Available**:
+    
+    - Assay-specific `h5ad` files
+    - Pan-assay `h5mu` files
+    - Count matrices
+    - MultiQC report
+    - Seurat object
+
+If there are additional outputs you need, please let us know—we’ll prioritize adding them.
+
+---
+
+## 💬 Feedback & Issues
+
+Your input is critical! Please share:
+
+- Bugs or errors you encounter
+- Feature requests
+- Suggestions for improving usability
+
+Thank you for helping us make Omnition better!
 
 
 ## **Introduction to Omnition**
@@ -97,22 +166,22 @@ cd /home/ubuntu/demo_data
 **Docker:**
 
     # Verify single and mixed species 3’ RNA workflows
-    nextflow run BioRadOpenSource/omnition -profile demo_rna_single,docker --rna.output /home/ubuntu/demo_data/rna
-    nextflow run BioRadOpenSource/omnition -profile demo_rna_mixed_options,docker --rna.output /home/ubuntu/demo_data/rna_mixed
+    nextflow run BioRadOpenSource/omnition -profile demo_rna_single,docker --core.outputDir /home/ubuntu/demo_data/rna
+    nextflow run BioRadOpenSource/omnition -profile demo_rna_mixed_options,docker --core.outputDir /home/ubuntu/demo_data/rna_mixed
 
     # Verify ATAC-seq and combinatorial ATAC-seq workflows
-    nextflow run BioRadOpenSource/omnition -profile demo_atac,docker --atac.output /home/ubuntu/demo_data/atac
-    nextflow run BioRadOpenSource/omnition -profile demo_catac,docker --catac.output /home/ubuntu/demo_data/catac
+    nextflow run BioRadOpenSource/omnition -profile demo_atac,docker --core.outputDir /home/ubuntu/demo_data/atac
+    nextflow run BioRadOpenSource/omnition -profile demo_catac,docker --core.outputDir /home/ubuntu/demo_data/catac
 
 **Singularity:**
 
     # Verify single and mixed species 3’ RNA workflows
-    nextflow run BioRadOpenSource/omnition -profile demo_rna_single,standard --rna.output /home/ubuntu/demo_data/rna
-    nextflow run BioRadOpenSource/omnition -profile demo_rna_mixed_options,standard --rna.output /home/ubuntu/demo_data/rna_mixed
+    nextflow run BioRadOpenSource/omnition -profile demo_rna_single,standard --core.outputDir /home/ubuntu/demo_data/rna
+    nextflow run BioRadOpenSource/omnition -profile demo_rna_mixed_options,standard --core.outputDir /home/ubuntu/demo_data/rna_mixed
     
     # Verify ATAC-seq and combinatorial ATAC-seq workflows
-    nextflow run BioRadOpenSource/omnition -profile demo_atac,standard --atac.output /home/ubuntu/demo_data/atac
-    nextflow run BioRadOpenSource/omnition -profile demo_catac,standard --catac.output /home/ubuntu/demo_data/catac
+    nextflow run BioRadOpenSource/omnition -profile demo_atac,standard --core.outputDir /home/ubuntu/demo_data/atac
+    nextflow run BioRadOpenSource/omnition -profile demo_catac,standard --core.outputDir /home/ubuntu/demo_data/catac
 
 > **NOTE:** Please note the use of `-` and `--` in the execution commands. Arguments with a single `-` in front are Nextflow arguments and those with `--` are user-defined parameters. You may also use the Nextflow -r flag to specify a git tag (i.e. release), branch, or hash to execute the pipeline at that point in the git history.
 

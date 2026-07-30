@@ -1,0 +1,532 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/BioRadOpenSource/omnition/main/nextflow_schema.json",
+  "title": "BioRadOpenSource/omnition pipeline parameters",
+  "description": "[PUBLIC] Bio-Rad multi-omic Single-cell Sequencing software.",
+  "type": "object",
+  "properties": {
+    "errorStrategy": {
+      "title": "Error Strategy",
+      "type": "string",
+      "enum": ["ignore", "terminate"],
+      "default": "ignore",
+      "description": "[PUBLIC] Error strategy to use.",
+      "help_text": "Error strategy to use. 'ignore' will ignore errors and continue processing, 'terminate' will stop processing on error."
+    },
+    "monochrome_logs": {
+      "title": "Monochrome Logs",
+      "type": "boolean",
+      "description": "[PUBLIC] Disable colorized logs.",
+      "help_text": "Disable colorized logs."
+    },
+    "diagnostics": {
+      "title": "Diagnostics",
+      "type": "boolean",
+      "description": "[PUBLIC] Enable diagnostic mode.",
+      "help_text": "Enable diagnostic mode."
+    },
+    "prefix": {
+      "title": "Prefix",
+      "type": "string",
+      "description": "[PUBLIC] A string value that will add a string to the beginning of the name of the pipeline reports.",
+      "help_text": "A string value that will add a string to the beginning of the name of the pipeline reports. Ex: ${prefix}-omntion-analysis-report.html"
+    },
+    "readQualityScore": {
+      "title": "Read Quality Score",
+      "type": "integer",
+      "default": 20,
+      "minimum": 0,
+      "maximum": 40,
+      "description": "[PUBLIC] Minimum quality score used in cutadapt_trim.",
+      "help_text": "Minimum quality score used in cutadapt_trim. Minimum value is 0, maximum value is 40."
+    },
+    "force": {
+      "title": "Force output overwrite",
+      "type": "boolean",
+      "description": "[PUBLIC] Force the pipeline to run even if the output directory already exists.",
+      "help_text": "Force the pipeline to run even if the output directory already exists."
+    },
+    "rna": {
+      "title": "RNA",
+      "type": "object",
+      "properties": {
+        "mixed": {
+          "title": "Mixed",
+          "type": "boolean",
+          "default": false,
+            "description": "[PUBLIC] Boolean value indicating whether the sample is mixed species.",
+          "help_text": "Boolean value indicating whether the sample is mixed species.",
+          "errorMessage": "The 'mixed' parameter must be boolean (true or false)."
+        },
+        "reference": {
+          "title": "Reference",
+          "type": "object",
+          "properties": {
+            "directory": {
+              "title": "Reference Directory",
+              "type": "string",
+              "format": "directory-path",
+                "description": "[PUBLIC] Path to the reference directory.",
+              "help_text": "Path to the reference directory."
+            },
+            "fasta": {
+              "title": "Reference FASTA",
+              "type": ["string", "object"],
+              "format": "file-path",
+                "description": "[PUBLIC] Path to the reference fasta file(s).",
+              "help_text": "Path to the reference fasta file(s).",
+              "pattern": "^(\\S+(.fa|.fa.gz|.fna|.fna.gz|.fasta|.fasta.gz)+ *(, )?|$)+$"
+            },
+            "gtf": {
+              "title": "Reference GTF",
+              "type": ["string", "object"],
+              "format": "file-path",
+                "description": "[PUBLIC] Path to the reference gtf file(s).",
+              "help_text": "Path to the reference gtf file(s).",
+              "pattern": "^(\\S+(.gtf|.gtf.gz)+ *(, )?|$)+$"
+            }
+          }
+        },
+        "crosstalkThreshold": {
+          "title": "Crosstalk Threshold",
+          "type": "number",
+          "default": 0.90,
+          "minimum": 0.51,
+          "maximum": 0.99,
+            "description": "[PUBLIC] Minimum fraction of UMIs attributed to a single species for a cell to be called as that species.",
+          "help_text": "Minimum fraction of UMIs attributed to a single species for a cell to be called as that species."
+        },
+        "includeIntrons": {
+          "title": "Include Introns",
+          "type": "boolean",
+          "default": false,
+            "description": "[PUBLIC] Boolean value indicating whether reads mapping to introns should be included in gene counts.",
+          "help_text": "Boolean value indicating whether reads mapping to introns should be included in gene counts."
+        },
+        "readQualityScore": {
+          "title": "Read Quality Score",
+          "type": "integer",
+          "default": 20,
+          "minimum": 0,
+          "maximum": 40,
+            "description": "[PUBLIC] Minimum quality score used in cutadapt_trim.",
+          "help_text": "Minimum quality score used in cutadapt_trim. Minimum value is 0, maximum value is 40."
+        },
+        "sampleSheet": {
+          "title": "sampleSheet",
+          "type": "string",
+          "format": "file-path",
+          "pattern": "\\S+\\.(csv|yaml)$",
+          "exists": true,
+          "schema": "assets/public/sample_sheet_schema_input_rna.json",
+            "description": "[PUBLIC] Path to comma-separated file containing information about the samples in the experiment (CSV format).",
+          "help_text": "You will need to create a design file with information about the samples in your experiment before running the pipeline. Use this parameter to specify its location. It has to be a comma-separated file with a header row."
+        }
+      }
+    },
+    "atac": {
+      "title": "ATAC",
+      "type": "object",
+      "properties": {
+        "tssWindowSize": {
+          "title": "TSS Window Size",
+          "type": "integer",
+          "default": 4000,
+          "multipleOf": 2,
+            "description": "[PUBLIC] The full window size in bases around TSS for TSS enrichment score calculations.",
+          "help_text": "The full window size in bases around TSS for TSS enrichment score calculations.",
+          "errorMessage": "The 'tssWindowSize' parameter must be an even integer."
+        },
+        "reference": {
+          "title": "Reference",
+          "type": "object",
+          "properties": {
+            "blocklist": {
+              "title": "Blocklist",
+              "type": "string",
+              "format": "file-path",
+                "description": "[PUBLIC] File path(s) to reference blocklist BED file(s).",
+              "help_text": "File path(s) to reference blocklist BED file(s).",
+              "errorMessage": "The 'blocklist' parameter must be a file path to a reference blocklist BED file.",
+              "pattern": "^(\\S+(blocklist.bed)+ *(, )?|$)+$"
+            },
+            "directory": {
+              "title": "Reference Directory",
+              "type": "string",
+              "format": "directory-path",
+                "description": "[PUBLIC] Path to the reference directory.",
+              "help_text": "Path to the reference directory."
+            },
+            "fasta": {
+              "title": "Reference FASTA",
+              "type": "string",
+              "format": "file-path",
+                "description": "[PUBLIC] Path to the reference fasta file.",
+              "help_text": "Path to the reference fasta file.",
+              "pattern": "^(\\S+(.fa|.fa.gz|.fna|.fna.gz|.fasta|.fasta.gz)+ *(, )?|$)+$"
+            },
+            "gtf": {
+              "title": "Reference GTF",
+              "type": "string",
+              "format": "file-path",
+                "description": "[PUBLIC] Path to the reference gtf file(s).",
+              "help_text": "Path to the reference gtf file(s).",
+              "pattern": "^(\\S+(.gtf|.gtf.gz)+ *(, )?|$)+$"
+            }
+          }
+        },
+        "sortSize": {
+          "title": "Sort Size",
+          "type": "number",
+          "default": 0.25,
+          "minimum": 0.01,
+          "maximum": 1,
+            "description": "[PUBLIC] Set the sort collection size ratio for Mark Duplicates. This parameter is to be used when the module runs out of memory due to high duplications. Lower the number to make memory footprint size more manageable.",
+          "help_text": "Set the sort collection size ratio for Mark Duplicates. This parameter is to be used when the module runs out of memory due to high duplications. Lower the number to make memory footprint size more manageable.",
+          "errorMessage": "The 'sortSize' parameter must be a Big Decimal less than 1 and greater than 0."
+        },
+        "mitoContig": {
+          "title": "Mitochondrial Contig",
+          "type": "string",
+          "default": "MT",
+            "description": "[PUBLIC] Name of the mitochondrial contig.",
+          "help_text": "Name of the mitochondrial contig.",
+          "errorMessage": "The 'mitoContig' parameter must be a string."
+        },
+        "mapQualityThreshold": {
+          "title": "Map Quality Threshold",
+          "type": "integer",
+          "default": 30,
+          "minimum": 0,
+          "maximum": 60,
+            "description": "[PUBLIC] Minimum mapq for a read to be kept.",
+          "help_text": "Minimum mapq for a read to be kept.",
+          "errorMessage": "The 'mapQualityThreshold' parameter must be an integer between 0 and 60."
+        },
+        "crosstalkThreshold": {
+          "title": "Crosstalk Threshold",
+          "type": "number",
+          "default": 0.90,
+          "minimum": 0.51,
+          "maximum": 0.99,
+            "description": "[PUBLIC] Minimum fraction of UMIs attributed to a single species for a cell to be called as that species.",
+          "help_text": "Minimum fraction of UMIs attributed to a single species for a cell to be called as that species.",
+          "errorMessage": "The 'crosstalkThreshold' parameter must be BigDecimal less than 1 and greater than 0.5."
+        },
+        "rounding": {
+          "title": "Rounding",
+          "default": 0,
+          "enum": [0, 10, 100, 1000],
+            "description": "[PUBLIC] Rounds insert sites to the nearest 10, 100, or 1000 bases before performing deconvolution. 0 means no rounding is performed.",
+          "help_text": "Rounds insert sites to the nearest 10, 100, or 1000 bases before performing deconvolution. 0 means no rounding is performed.",
+          "errorMessage": "The 'rounding' parameter must be one of 0, 10, 100, or 1000."
+        },
+        "maxInsertSize": {
+          "title": "Max Insert Size",
+          "type": "integer",
+          "default": 2000,
+          "minimum": 100,
+            "description": "[PUBLIC] The largest insert that the pipeline will recognize.",
+          "help_text": "The largest insert that the pipeline will recognize.",
+          "errorMessage": "The 'maxInsertSize' parameter must be an integer greater than 100."
+        },
+        "mixed": {
+          "title": "Mixed",
+          "type": "boolean",
+          "default": false,
+            "description": "[PUBLIC] Boolean value indicating whether the sample is mixed species.",
+          "help_text": "Boolean value indicating whether the sample is mixed species.",
+          "errorMessage": "The 'mixed' parameter must be boolean (true or false)."
+        },
+        "sampleSheet": {
+          "title": "sampleSheet",
+          "type": "string",
+          "format": "file-path",
+          "pattern": "\\S+\\.(csv|yaml)$",
+          "exists": true,
+          "schema": "assets/public/sample_sheet_schema_input_atac.json",
+            "description": "[PUBLIC] Path to comma-separated file containing information about the samples in the experiment (CSV format).",
+          "help_text": "You will need to create a design file with information about the samples in your experiment before running the pipeline. Use this parameter to specify its location. It has to be a comma-separated file with a header row.",
+          "errorMessage": "The 'sampleSheet' parameter must be a file path to a comma-separated file containing information about the samples in the experiment (CSV format)."
+        }
+      }
+    },
+    "catac": {
+      "title": "Combinatorial ATAC",
+      "type": "object",
+      "properties": {
+        "workflow": {
+          "title": "Workflow",
+          "type": "string",
+          "enum": ["analysis", "full", "reference"],
+          "description": "[PUBLIC] The workflow to run.",
+          "help_text": "The workflow to run.",
+          "errorMessage": "The 'workflow' parameter must be one of 'analysis', 'full', or 'reference'."
+        },
+        "tssWindowSize": {
+          "title": "TSS Window Size",
+          "type": "integer",
+          "default": 4000,
+          "multipleOf": 2,
+            "description": "[PUBLIC] The full window size in bases around TSS for TSS enrichment score calculations.",
+          "help_text": "The full window size in bases around TSS for TSS enrichment score calculations.",
+          "errorMessage": "The 'tssWindowSize' parameter must be an even integer."
+        },
+        "reference": {
+          "title": "Reference",
+          "type": "object",
+          "properties": {
+            "blocklist": {
+              "title": "Blocklist",
+              "type": "string",
+              "format": "file-path",
+                "description": "[PUBLIC] File path(s) to reference blocklist BED file(s).",
+              "help_text": "File path(s) to reference blocklist BED file(s).",
+              "errorMessage": "The 'blocklist' parameter must be a file path to a reference blocklist BED file.",
+              "pattern": "^(\\S+(blocklist.bed)+ *(, )?|$)+$"
+            },
+            "directory": {
+              "title": "Reference Directory",
+              "type": "string",
+              "format": "directory-path",
+                "description": "[PUBLIC] Path to the reference directory.",
+              "help_text": "Path to the reference directory."
+            },
+            "fasta": {
+              "title": "Reference FASTA",
+              "type": "string",
+              "format": "file-path",
+                "description": "[PUBLIC] Path to the reference fasta file.",
+              "help_text": "Path to the reference fasta file.",
+              "pattern": "^(\\S+(.fa|.fa.gz|.fna|.fna.gz|.fasta|.fasta.gz)+ *(, )?|$)+$"
+            },
+            "gtf": {
+              "title": "Reference GTF",
+              "type": "string",
+              "format": "file-path",
+                "description": "[PUBLIC] Path to the reference gtf file(s).",
+              "help_text": "Path to the reference gtf file(s).",
+              "pattern": "^(\\S+(.gtf|.gtf.gz)+ *(, )?|$)+$"
+            }
+          }
+        },
+        "sortSize": {
+          "title": "Sort Size",
+          "type": "number",
+          "default": 0.25,
+          "minimum": 0.01,
+          "maximum": 1,
+            "description": "[PUBLIC] Set the sort collection size ratio for Mark Duplicates. This parameter is to be used when the module runs out of memory due to high duplications. Lower the number to make memory footprint size more manageable.",
+          "help_text": "Set the sort collection size ratio for Mark Duplicates. This parameter is to be used when the module runs out of memory due to high duplications. Lower the number to make memory footprint size more manageable.",
+          "errorMessage": "The 'sortSize' parameter must be a Big Decimal less than 1 and greater than 0."
+        },
+        "mitoContig": {
+          "title": "Mitochondrial Contig",
+          "type": "string",
+          "default": "MT",
+            "description": "[PUBLIC] Name of the mitochondrial contig.",
+          "help_text": "Name of the mitochondrial contig.",
+          "errorMessage": "The 'mitoContig' parameter must be a string."
+        },
+        "mapQualityThreshold": {
+          "title": "Map Quality Threshold",
+          "type": "integer",
+          "default": 30,
+          "minimum": 0,
+          "maximum": 60,
+            "description": "[PUBLIC] Minimum MAPQ for a read to be kept.",
+          "help_text": "Minimum MAPQ for a read to be kept.",
+          "errorMessage": "The 'mapQualityThreshold' parameter must be an integer between 0 and 60."
+        },
+        "crosstalkThreshold": {
+          "title": "Crosstalk Threshold",
+          "type": "number",
+          "default": 0.90,
+          "minimum": 0.51,
+          "maximum": 0.99,
+            "description": "[PUBLIC] Minimum fraction of UMIs attributed to a single species for a cell to be called as that species.",
+          "help_text": "Minimum fraction of UMIs attributed to a single species for a cell to be called as that species.",
+          "errorMessage": "The 'crosstalkThreshold' parameter must be BigDecimal less than 1 and greater than 0.5."
+        },
+        "rounding": {
+          "title": "Rounding",
+          "default": 0,
+          "enum": [0, 10, 100, 1000],
+            "description": "[PUBLIC] Rounds insert sites to the nearest 10, 100, or 1000 bases before performing deconvolution. 0 means no rounding is performed.",
+          "help_text": "Rounds insert sites to the nearest 10, 100, or 1000 bases before performing deconvolution. 0 means no rounding is performed.",
+          "errorMessage": "The 'rounding' parameter must be one of 0, 10, 100, or 1000."
+        },
+        "maxInsertSize": {
+          "title": "Max Insert Size",
+          "type": "integer",
+          "default": 2000,
+          "minimum": 100,
+            "description": "[PUBLIC] The largest insert that the pipeline will recognize.",
+          "help_text": "The largest insert that the pipeline will recognize.",
+          "errorMessage": "The 'maxInsertSize' parameter must be an integer and a value of at least 100."
+        },
+        "mixed": {
+          "title": "Mixed",
+          "type": "boolean",
+          "default": false,
+            "description": "[PUBLIC] Boolean value indicating whether the sample is mixed species.",
+          "help_text": "Boolean value indicating whether the sample is mixed species.",
+          "errorMessage": "The 'mixed' parameter must be boolean."
+        },
+        "tiSheet": {
+          "title": "tiSheet",
+          "type": "string",
+          "format": "file-path",
+          "pattern": "\\S+\\.(csv|yaml)$",
+          "exists": true,
+          "schema": "assets/public/sample_sheet_schema_input_ti.json",
+            "description": "[PUBLIC] Path to file containing TI information for cATAC samples.",
+          "help_text": "Path to file containing TI information for cATAC samples.",
+          "errorMessage": "The 'tiSheet' parameter must be a file path to a CSV or YAML file."
+        },
+        "i7AsTi": {
+          "title": "I7 As TI",
+          "type": "boolean",
+          "default": false,
+            "description": "[PUBLIC] Boolean value indicating whether the i7 index should be used as the TI index.",
+          "help_text": "Boolean value indicating whether the i7 index should be used as the TI index.",
+          "errorMessage": "The 'i7AsTi' parameter must be boolean."
+        },
+        "tiRead": {
+          "title": "TI Read",
+          "type": "string",
+          "enum": ["r1", "r2"],
+          "default": "r1",
+            "description": "[PUBLIC] The read that contains the TI sequence assuming the TI is not in the i7 sequence.",
+          "help_text": "The read that contains the TI sequence assuming the TI is not in the i7 sequence.",
+          "errorMessage": "The 'tiRead' parameter must be one of 'r1' or 'r2'."
+        },
+        "barcodedTn5Config": {
+          "title": "Barcoded Tn5 Config",
+          "type": "string",
+          "format": "file-path",
+          "pattern": "\\S+(.csv)",
+            "description": "[PUBLIC] File path to a CSV file that specifies the TIs and FASTQs assigned to each sample. If running a cATAC workflow, and no config file is provided, the default behavior is to merge all TIs and FASTQs as a single sample. Only include TIs present in a given experiment as unused TIs that are included in the config can lead to errors. Must be formatted with these three columns: 1. Sample The name of the sample. 2. Fastq The name given to the fastq file pair. 3. TI The name of the TI used (see conf/atac_preset.config for preset list).",
+          "help_text": "File path to a CSV file that specifies the TIs and FASTQs assigned to each sample. If running a cATAC workflow, and no config file is provided, the default behavior is to merge all TIs and FASTQs as a single sample. Only include TIs present in a given experiment as unused TIs that are included in the config can lead to errors. Must be formatted with these three columns: 1. Sample The name of the sample. 2. Fastq The name given to the fastq file pair. 3. TI The name of the TI used (see conf/atac_preset.config for preset list).",
+          "errorMessage": "The 'barcodedTn5Config' parameter must be a file path to a CSV file."
+        },
+        "tiErrorOverride": {
+          "title": "TI Error Override",
+          "type": "boolean",
+          "default": false,
+            "description": "[PUBLIC] If set to true, the pipeline will ignore errors in the TI config file. Only fastq-TI combinations specified in the config file will be used. All others will be ignored.",
+          "help_text": "If set to true, the pipeline will ignore errors in the TI config file. Only fastq-TI combinations specified in the config file will be used. All others will be ignored.",
+          "errorMessage": "The 'tiErrorOverride' parameter must be boolean."
+        },
+        "sampleSheet": {
+          "title": "sampleSheet",
+          "type": "string",
+          "format": "file-path",
+          "pattern": "\\S+\\.(csv|yaml)$",
+          "exists": true,
+          "schema": "assets/public/sample_sheet_schema_input_atac.json",
+            "description": "[PUBLIC] Path to comma-separated file containing information about the samples in the experiment (CSV format).",
+          "help_text": "You will need to create a design file with information about the samples in your experiment before running the pipeline. Use this parameter to specify its location. It has to be a comma-separated file with a header row.",
+          "errorMessage": "The 'sampleSheet' parameter must be a file path to a CSV or YAML file."
+        }
+      },
+      "allOf": [
+      {
+        "if": {
+          "properties": {
+            "tiRead": {
+              "type": ["string"],
+              "enum": ["r1", "r2"]
+            }
+          },
+          "required": ["tiRead"]
+        },
+        "then": {
+          "properties": {
+            "i7AsTi": { 
+                "not": {
+                  "const": true
+                },
+                "errorMessage": "The 'tiRead' parameter cannot be used in conjuction with the 'i7AsTi' parameter."
+            }
+          }
+        }
+      }]
+    },
+    "cytometry": {
+      "title": "Cytometry",
+      "type": "object",
+      "properties": {
+        "adtFile": {
+          "title": "Antibody Panel File",
+          "type": "string",
+          "format": "file-path",
+          "pattern": "\\S+\\.csv$",
+          "exists": true,
+          "schema": "assets/public/adtFile_schema_input.json",
+            "description": "[PUBLIC] Antibody panel file (CSV format).",
+          "help_text": "Antibody panel file (CSV format).",
+          "errorMessage": "Antibody panel file must be in CSV format."
+        },
+        "sampleSheet": {
+        "title": "sampleSheet",
+        "type": "string",
+        "format": "file-path",
+        "pattern": "\\S+\\.(csv|yaml)$",
+        "exists": true,
+        "schema": "assets/public/sample_sheet_schema_input_cytometry.json",
+          "description": "[PUBLIC] Path to comma-separated file containing information about the samples in the experiment (CSV format).",
+        "help_text": "You will need to create a design file with information about the samples in your experiment before running the pipeline. Use this parameter to specify its location. It has to be a comma-separated file with a header row.",
+        "errorMessage": "Sample sheet file must be in CSV or YAML format."
+        }
+      }
+    },
+    "maxCpus": {
+      "title": "Max CPUs",
+      "type": "integer",
+      "default": 64,
+      "description": "[PUBLIC] Maximum CPUs to use.",
+      "help_text": "Maximum CPUs to use."
+    },
+    "maxMemory": {
+      "title": "Max Memory",
+      "type": "string",
+      "default": "500.GB",
+      "pattern": "^[0-9]+.[MGT]B$",
+      "description": "[PUBLIC] Maximum memory to use.",
+      "help_text": "Maximum memory to use."
+    },
+    "maxTime": {
+      "title": "Max Time",
+      "type": "string",
+      "default": "12h",
+      "pattern": "^[0-9]+(\\.)?[hms]$",
+      "description": "[PUBLIC] Maximum time a process is allowed to run before automatically failing.",
+      "help_text": "Maximum time a process is allowed to run before automatically failing."
+    },
+    "cell": {
+      "title":  "Cell",
+      "type": "object",
+      "properties": {
+        "loaded": {
+          "title": "Cell Loaded",
+          "type": "integer",
+          "description": "[PUBLIC] Assay-specific settings related to cell calling configuration.",
+          "help_text": "Assay-specific settings related to cell calling configuration."
+        }
+      }
+    },
+    "barcode": {
+      "title": "Barcode",
+      "type": "object",
+      "properties": {
+        "force": {
+          "title": "Barcode Force",
+          "type": "integer",
+          "description": "[PUBLIC] The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer).",
+          "help_text": "The number of cells or minimum features per barcode to return. This will bypass all cell calling algorithms and return the top n number of barcodes based on unique reads (must be an integer)."
+        }
+      }
+    }
+  }
+}

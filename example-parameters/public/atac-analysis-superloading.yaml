@@ -1,0 +1,14 @@
+atac:
+    workflow: "analysis"
+    input: "/home/ubuntu/combinatorial-atac-reads"
+    reference:
+        directory: "/home/ubuntu/mixed-genome"
+        fasta: "/home/ubuntu/mixed-genome/human.fa.gz /home/ubuntu/mixed-genome/mouse.fa.gz"
+        gtf: "/home/ubuntu/mixed-genome/human.gtf.gz /home/ubuntu/mixed-genome/mouse.gtf.gz"
+        blocklist: "/home/ubuntu/mixed-genome/filtered.blocklist.bed"
+    mixed: true
+    barcodedTn5: true
+    ti:
+            ti1: "AAAGAA"
+            ti2: "TTTGGG"
+    tiread: "r1"
